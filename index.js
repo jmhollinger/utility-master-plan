@@ -28,6 +28,11 @@ app.get('/crowncastle', function (req, res) {
   res.render('main', {"utility": "Crown Castle"});
 });
 
+app.get('/success', function (req, res) {
+  var link = req.query.orig
+  res.render('success',{"redirect" : link});
+});
+
 /*app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
 });*/
