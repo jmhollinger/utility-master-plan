@@ -1,0 +1,67 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='')
+    title Utility Master Plan Submittal - Lexington, KY
+    // Bootstrap core CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    // Custom styles for this template
+    link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='css/custom.css')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    //if lt IE 9
+      script(src='js/html5shiv.min.js')
+      script(src='js/respond.min.js')
+  body
+    .container
+      .col-sm-12.text-center
+        h1 Utility Master Plan Project
+      .row
+        .col-sm-6
+          h5
+            | Please fill out the form below for each project on your master plan for the coming year. All fields are required.
+          form.form(data-toggle='validator')
+            .form-group
+              label Utility
+              input#projectname.form-control(value= utility, type='text', readonly='')
+            .form-group.has-feedback
+              label Project Name
+              input#projectname.form-control(type='text', data-error='This field is required.')
+            .form-group
+              label Project Description
+              textarea#projectdesc.form-control(data-error='This field is required.')
+            .form-group
+              label Start Date
+              input#start.form-control(type='date', data-error='This field is required.')
+            .form-group
+              label End Date
+              input#end.form-control(type='date', data-error='This field is required.')
+            .form-group
+              label Other Info
+              input#other.form-control(type='text', data-error='This field is required.')
+            .form-group
+              label Location
+              input#coordinates.form-control(type='text', data-error='Please draw the project on the map.', readonly='')
+        .col-sm-6
+          h5
+            | Please use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
+          .form-group
+            input#pac-input.form-control(placeholder='Search the map...')
+          #map-canvas
+          .form-group
+            button#clearmap.form-control.btn.btn-danger Clear Map
+      .form-group
+        button#submit.btn.btn-lg.btn-success Submit Project
+    //
+      Bootstrap core JavaScript
+      ==================================================
+    // Placed at the end of the document so the pages load faster
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
+    script(src='js/map.js')
