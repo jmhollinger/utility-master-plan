@@ -12,8 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
-  enableLogin: true,
-  enableLogout: true,
   enableRegistration: false
 }));
 
