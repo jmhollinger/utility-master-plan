@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'jade');
 
-/*app.use(stormpath.init(app, {
+app.use(stormpath.init(app, {
   // Optional configuration options.
   website: true
-}));*/
+}));
 
 app.get('/', function (req, res) {
   res.render('landing');
@@ -83,9 +83,6 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
 })
 });
 
-/*app.on('stormpath.ready', function() {
+app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
-});*/
-
-
-app.listen(process.env.PORT || 3000)
+});
