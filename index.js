@@ -17,7 +17,7 @@ app.use(stormpath.init(app, {
   website: true
 }));
 
-app.get('/', stormpath.groupsRequired(['utilities','admins']), function (req, res) {
+app.get('/', stormpath.groupsRequired(['admins']), function (req, res) {
   res.render('landing');
 });
 
