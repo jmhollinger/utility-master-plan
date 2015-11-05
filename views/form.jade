@@ -16,8 +16,13 @@ html(lang='en')
       script(src='js/respond.min.js')
   body
     .container
-      .col-sm-12.text-center
-        h1 Utility Master Plan Project
+      .col-sm-12
+        h1 Utility Master Plan Submittal      
+        ul.nav.nav-pills
+          li(role='presentation')
+            a(href='/') Home
+          li(role='presentation')
+            a(href='/logout') Logout
       .row
         .col-sm-12
           form#project-form.form(action='submit', method='post')
