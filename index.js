@@ -17,11 +17,11 @@ app.use(stormpath.init(app, {
   website: true
 }));
 
-app.get('/', stormpath.groupsRequired(['admins']), function (req, res) {
+app.get('/', stormpath.groupsRequired(['utilities, admins']), function (req, res) {
   res.render('landing');
 });
 
-app.get('/cgas', function (req, res) {
+app.get('/cgas', stormpath.groupsRequired(['columbia_gas, admins']), function (req, res) {
   res.render('form', {"utility": "Columbia Gas"});
 });
 
