@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
-  enableRegistration: false
+  website: true
 }));
 
 app.get('/', stormpath.groupsRequired(['utilities', 'admins'], false), function (req, res) {
@@ -23,15 +23,15 @@ app.get('/cgas', stormpath.groupsRequired(['columbia_gas', 'admins'], false), fu
   res.render('form', {"utility": "Columbia Gas"});
 });
 
-app.get('/ku', stormpath.groupsRequired(['utilities'], false), function (req, res) {
+app.get('/ku', stormpath.groupsRequired(['ku', 'admins'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky Utilities"});
 });
 
-app.get('/kawc', stormpath.groupsRequired(['utilities'], false), function (req, res) {
+app.get('/kawc', stormpath.groupsRequired(['kawc', 'admins'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky American Water Company"});
 });
 
-app.get('/crowncastle', stormpath.groupsRequired(['utilities'], false), function (req, res) {
+app.get('/crowncastle', stormpath.groupsRequired(['crown_castle', 'admins'], false), function (req, res) {
   res.render('form', {"utility": "Crown Castle"});
 });
 
