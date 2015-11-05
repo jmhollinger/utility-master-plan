@@ -25,15 +25,15 @@ app.get('/cgas', stormpath.groupsRequired(['columbia_gas', 'admins'], false), fu
   res.render('form', {"utility": "Columbia Gas"});
 });
 
-app.get('/ku', function (req, res) {
+app.get('/ku', stormpath.groupsRequired(['utilities'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky Utilities"});
 });
 
-app.get('/kawc', function (req, res) {
+app.get('/kawc', stormpath.groupsRequired(['utilities'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky American Water Company"});
 });
 
-app.get('/crowncastle', function (req, res) {
+app.get('/crowncastle', stormpath.groupsRequired(['utilities'], false), function (req, res) {
   res.render('form', {"utility": "Crown Castle"});
 });
 
