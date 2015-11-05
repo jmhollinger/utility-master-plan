@@ -63,7 +63,7 @@ function initialize(){
     $('#coordinates').val(JSON.stringify(points_obj))
     
 
-    $('#clearmap').click(function(){
+    $('#clear-map').click(function(){
     line.setMap(null)
 
     drawingManager.setOptions({
@@ -85,11 +85,10 @@ function initialize(){
 
 
 
-
   //Set default map bounds, expressed as southwest and northeast points.
   var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(37.921971, -84.663139),
-      new google.maps.LatLng(38.155595, -84.334923)
+      new google.maps.LatLng(38.063635376296816,-84.53970909118652),
+      new google.maps.LatLng(38.003737861469666,-84.44426536560059)
       );
   
   map.fitBounds(defaultBounds);
@@ -151,44 +150,6 @@ function initialize(){
       var bounds = map.getBounds();
       searchBox.setBounds(bounds);
     });
-  }
-  //End the address search.
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-function postGoogle() {
-        
-        var util = $('#utility').val();
-        var name = $('#name').val();
-        var desc = $('#desc').val();
-        var start = $('#start').val();
-        var end = $('#end').val();
-        var xy = $('#coordinates').val();
-
-        var req = location.pathname.replace("/","")
-        var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'
-            
-        $.ajax({
-                url: 'https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse',
-                data: { 
-                  "entry.372192304": util,
-                  "entry.1791471663": name,
-                  "entry.959945629": desc,
-                  "entry.2073523555": start,
-                  "entry.1949851848": end,
-                  "entry.2073488365": xy                 
-                },
-                type: "POST",
-                dataType: "xml",
-                statusCode: {
-                        0: function() {
-                          location.replace("/success" + '?orig=' + req)
-                        }
-                      ,
-                        200: function () {
-                          location.replace("/success" + '?orig=' + req)
-                    }
-                }
-            });
-    }

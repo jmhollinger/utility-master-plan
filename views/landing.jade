@@ -8,34 +8,30 @@ html(lang='en')
     meta(name='author', content='')
     link(rel='icon', href='')
     title Utility Master Plan Submittal - Lexington, KY
-    // Bootstrap core CSS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-    // Custom styles for this template
     link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='css/custom.css')
-    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
     //if lt IE 9
       script(src='js/html5shiv.min.js')
       script(src='js/respond.min.js')
   body
     .container
       .col-sm-12.text-center
-        h1 Thanks for submitting your project!
-      .col-sm-6.col-sm-offset-3 
-        p <strong>Utility:</strong> #{Utility}
-        p <strong>Submitted By:</strong> #{Submitter}
-        p <strong>Name:</strong> #{Name}
-        p <strong>Description:</strong> #{Description}
-        p <strong>Start Date:</strong> #{StartDate}
-        p <strong>End Date:</strong> #{EndDate}
-        p <strong>Type:</strong> #{Type}
-        p <strong>Street Cut?:</strong> #{StreetCut}
-        p <strong>Days in ROW?:</strong> #{DaysinROW}
-        p <strong>Location:</strong> #{Coordinates}
-      .col-sm-12.text-center
-        a(href= OriginURL) Click here to submit another project.
-    // Placed at the end of the document so the pages load faster
+        h1 Utility Master Plan Submittal
+        h4 Select your utility:
+        .form-group
+          a.btn.btn-success(href='/ku') Kentucky Utilities
+        .form-group
+          a.btn.btn-success(href='/kawc') Kentucky American Water Company
+        .form-group
+          a.btn.btn-success(href='/cgas') Columbia Gas
+        .form-group
+          a.btn.btn-success(href='/crowncastle') Crown Castle 
+
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
+    script(src='js/jquery.validate.min.js')
     script(src='js/map.js')
+    script(src='js/form.js')
+
