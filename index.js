@@ -13,7 +13,6 @@ app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
   // Optional configuration options.
-  enableRegistration: false,
   website: true
 }));
 
