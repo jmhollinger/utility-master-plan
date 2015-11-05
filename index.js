@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
-  // Optional configuration options.
   enableRegistration: false,
-  website: true
 }));
 
 app.get('/', stormpath.groupsRequired(['utilities', 'admins'], false), function (req, res) {
