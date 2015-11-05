@@ -27,52 +27,52 @@ html(lang='en')
         form#project-form.form(action='submit', method='post')
           h3 Project Information
           h5 Please fill out the form below for each project on your master plan for the coming year. All fields are required.
-            .row
-              .form-group.col-sm-6
-                label Utility
-                input#utility.form-control(name='utility', value= utility, type='text', readonly, required)
-              .form-group.col-sm-6
-                label Submitted By
-                input#utility.form-control(name='submitter', type='text', required)
-            .form-group.has-feedback
-              label Project Name
-              input#name.form-control(name='name', type='text', data-error='This field is required.' required)
-            .form-group
-              label Project Description
-              textarea#desc.form-control(name='desc', data-error='This field is required.' required)
-            .row
-              .form-group.col-sm-6
-                label Start Date
-                input#start.form-control(name='start', type='date', data-error='This field is required.' required)
-              .form-group.col-sm-6
-                label End Date
-                input#end.form-control(name='end', type='date', data-error='This field is required.' required)
-            .row
-              .form-group.col-sm-4
-                label Underground or Aerial
-                select#type.form-control(name='type', type='text', data-error='This field is required.' required)
-                  option Underground
-                  option Aerial
-                  option Both
-              .form-group.col-sm-4
-                label Street cut required?
-                select#streetcut.form-control(name='streetcut', type='text', data-error='This field is required.' required)
-                  option Yes
-                  option No
-              .form-group.col-sm-4
-                label Days in ROW?
-                input#Days.form-control(name='daysinrow', type='number', data-error='This field is required.' required)
-            h3 Project Location
-            h5 Please use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
-            .col-sm-12  
-              #map-canvas
-              input#pac-input(placeholder='Search the map...')
-              button#clear-map.btn.btn-danger(type='button') Clear Map
-            .form-group
-              label Location
-              input#coordinates.form-control(name='coordinates', type='text', readonly, required)
-            .form-group
-              button#submit.btn.btn-lg.btn-success(type='submit') Submit Project
+          .row
+            .form-group.col-sm-6
+              label Utility
+              input#utility.form-control(name='utility', value= utility, type='text', readonly, required)
+            .form-group.col-sm-6
+              label Submitted By
+              input#utility.form-control(name='submitter', type='text', required)
+          .form-group.has-feedback
+            label Project Name
+            input#name.form-control(name='name', type='text', data-error='This field is required.' required)
+          .form-group
+            label Project Description
+            textarea#desc.form-control(name='desc', data-error='This field is required.' required)
+          .row
+            .form-group.col-sm-6
+              label Start Date
+              input#start.form-control(name='start', type='date', data-error='This field is required.' required)
+            .form-group.col-sm-6
+              label End Date
+              input#end.form-control(name='end', type='date', data-error='This field is required.' required)
+          .row
+            .form-group.col-sm-4
+              label Underground or Aerial
+              select#type.form-control(name='type', type='text', data-error='This field is required.' required)
+                option Underground
+                option Aerial
+                option Both
+            .form-group.col-sm-4
+              label Street cut required?
+              select#streetcut.form-control(name='streetcut', type='text', data-error='This field is required.' required)
+                option Yes
+                option No
+            .form-group.col-sm-4
+              label Days in ROW?
+              input#Days.form-control(name='daysinrow', type='number', data-error='This field is required.' required)
+          h3 Project Location
+          h5 Please use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
+          .col-sm-12  
+            #map-canvas
+            input#pac-input(placeholder='Search the map...')
+            button#clear-map.btn.btn-danger(type='button') Clear Map
+          .form-group
+            label Location
+            input#coordinates.form-control(name='coordinates', type='text', readonly, required)
+          .form-group
+            button#submit.btn.btn-lg.btn-success(type='submit') Submit Project
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
