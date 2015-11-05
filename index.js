@@ -13,10 +13,11 @@ app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
   // Optional configuration options.
+  enableRegistration: false,
   website: true
 }));
 
-app.get('/', function (req, res) {
+app.get('/', stormpath.groupsRequired(['utilities','admins']), function (req, res) {
   res.render('landing');
 });
 
