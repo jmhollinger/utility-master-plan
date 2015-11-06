@@ -47,6 +47,11 @@ app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], fals
 
 app.post('/submit', function (req, res) {
 
+function format_date(date){
+var arr = date.split("/")
+return arr[2] + '-' + arr[0] + '-' + arr[1] 
+}
+
 var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'  
 
 var properties = {
@@ -110,8 +115,3 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
 });
-
-function format_date(date){
-var arr = date.split("/")
-return arr[2] + '-' + arr[0] + '-' + arr[1] 
-}
