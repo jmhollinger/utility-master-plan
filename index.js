@@ -34,20 +34,36 @@ app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (
 });
 
 app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Kentucky Utilities"});
+  res.render('form', {"utility": "Kentucky Utilities", "user": req.user.givenName + ' ' + req.user.surname });
 });
 
 app.get('/kawc', stormpath.groupsRequired(['KAWC', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Kentucky American Water Company"});
+  res.render('form', {"utility": "Kentucky American Water Company", "user": req.user.givenName + ' ' + req.user.surname });
 });
 
 app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Crown Castle"});
+  res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname });
 });
 
 app.post('/submit', function (req, res) {
 
 var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'  
+
+var feature = {
+      "type": "Feature",
+      "properties": {
+        "Utility" : req.body.utility,
+        "Submitter" : req.body.submitter,
+        "Name" : req.body.name,
+        "Description" : req.body.desc,
+        "StartDate" : req.body.start,
+        "EndDate" : req.body.end,
+        "Type" : req.body.type,
+        "StreetCut" : req.body.streetcut,
+        "DaysinROW" : req.body.daysinrow
+      },
+      "geometry": req.body.coordinates
+    }
 
 var data_google = {
   "entry.372192304" : req.body.utility,
@@ -78,6 +94,7 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
         "DaysinROW" : req.body.daysinrow,
         "Coordinates" : req.body.coordinates,
         "GoogleResponse" : httpResponse.statusCode
+        "Feature" : feature
           }
       );
   }
@@ -95,3 +112,42 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
 });
+
+
+{
+      "type": "Feature",
+      "properties": {
+        "stroke": "#555555",
+        "stroke-width": 2,
+        "stroke-opacity": 1,
+        "fill": "#555555",
+        "fill-opacity": 0.5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -93.58154296875,
+              41.380930388318
+            ],
+            [
+              -93.58154296875,
+              41.828642001860544
+            ],
+            [
+              -92.823486328125,
+              41.828642001860544
+            ],
+            [
+              -92.823486328125,
+              41.380930388318
+            ],
+            [
+              -93.58154296875,
+              41.380930388318
+            ]
+          ]
+        ]
+      }
+    }
