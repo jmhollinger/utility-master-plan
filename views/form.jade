@@ -48,32 +48,32 @@ html(lang='en')
               input#utility.form-control(name='submitter', value= user, type='text', required)
           .form-group.has-feedback
             label Project Name
-            input#name.form-control(name='name', type='text', data-error='This field is required.' required)
+            input#name.form-control(name='name', type='text', placeholder='mm/dd/yyyy' required)
           .form-group
             label Project Description
-            textarea#desc.form-control(name='desc', data-error='This field is required.' required)
+            textarea#desc.form-control(name='desc', placeholder='mm/dd/yyyy' required)
           #dates.row
             .form-group.col-sm-6
               label Start Date
-              input#start.form-control(name='start', type='text', data-error='This field is required.' required)
+              input#start.form-control(name='start', type='text', placeholder='mm/dd/yyyy' required)
             .form-group.col-sm-6
               label End Date
-              input#end.form-control(name='end', type='text', data-error='This field is required.' required)
+              input#end.form-control(name='end', type='text', required)
           .row
             .form-group.col-sm-4
               label Underground or Aerial
-              select#type.form-control(name='type', type='text', data-error='This field is required.' required)
+              select#type.form-control(name='type', type='text', required)
                 option Underground
                 option Aerial
                 option Both
             .form-group.col-sm-4
               label Street cut required?
-              select#streetcut.form-control(name='streetcut', type='text', data-error='This field is required.' required)
+              select#streetcut.form-control(name='streetcut', type='text', required)
                 option Yes
                 option No
             .form-group.col-sm-4
               label Days in ROW?
-              input#Days.form-control(name='daysinrow', type='number', data-error='This field is required.' required)
+              input#Days.form-control(name='daysinrow', type='number', required)
           h3 Project Location
           h5 Please use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
           .col-sm-12  
