@@ -60,7 +60,7 @@ var properties = {
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow
       }
-      
+
 var feature = '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
 
 var data_google = {
@@ -73,7 +73,7 @@ var data_google = {
   "entry.1836361517" : req.body.type,
   "entry.1678818035" : req.body.streetcut,
   "entry.1974169754" : req.body.daysinrow,
-  "entry.2073488365" : req.body.coordinates
+  "entry.2073488365" : feature
 }
 
 request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){ 
