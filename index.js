@@ -49,11 +49,9 @@ app.post('/submit', function (req, res) {
 
 var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'  
 
-var feature = {
-      "type": "Feature",
-      "properties": {
+var properties = {
         "Utility" : req.body.utility,
-        "Submitter" : req.body.submitter,
+        "SubmittedBy" : req.body.submitter,
         "Name" : req.body.name,
         "Description" : req.body.desc,
         "StartDate" : req.body.start,
@@ -61,9 +59,9 @@ var feature = {
         "Type" : req.body.type,
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow
-      },
-      "geometry": req.body.coordinates
-    }
+      }
+      
+var feature = '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
 
 var data_google = {
   "entry.372192304" : req.body.utility,
