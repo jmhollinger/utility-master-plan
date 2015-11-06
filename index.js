@@ -77,7 +77,7 @@ var data_google = {
 }
 
 request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){ 
-  if (httpResponse.statusCode === 200) {
+  if (httpResponse.statusCode === 200 && body.match("Your response has been recorded.")) {
     res.render('success',
       {
         "OriginURL" : req.headers.referer,
