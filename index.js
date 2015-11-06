@@ -97,7 +97,6 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
         "Feature" : feature
           }
       );
-    console.log(feature)
   }
   else {
     res.render('error',
