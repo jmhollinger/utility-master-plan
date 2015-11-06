@@ -93,7 +93,7 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow,
         "Coordinates" : req.body.coordinates,
-        "GoogleResponse" : httpResponse.statusCode
+        "GoogleResponse" : httpResponse.statusCode,
         "Feature" : feature
           }
       );
