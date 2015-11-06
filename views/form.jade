@@ -48,17 +48,17 @@ html(lang='en')
               input#utility.form-control(name='submitter', value= user, type='text', required)
           .form-group.has-feedback
             label Project Name
-            input#name.form-control(name='name', type='text', placeholder='mm/dd/yyyy' required)
+            input#name.form-control(name='name', type='text', required)
           .form-group
             label Project Description
-            textarea#desc.form-control(name='desc', placeholder='mm/dd/yyyy' required)
+            textarea#desc.form-control(name='desc', required)
           #dates.row
             .form-group.col-sm-6
               label Start Date
-              input#start.form-control(name='start', type='text', placeholder='mm/dd/yyyy' required)
+              input#start.form-control(name='start', type='text', placeholder='mm/dd/yyyy', required)
             .form-group.col-sm-6
               label End Date
-              input#end.form-control(name='end', type='text', required)
+              input#end.form-control(name='end', type='text', placeholder='mm/dd/yyyy', required)
           .row
             .form-group.col-sm-4
               label Underground or Aerial

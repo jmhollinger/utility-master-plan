@@ -68,8 +68,8 @@ var data_google = {
   "entry.1854949369" : req.body.submitter, 
   "entry.1791471663" : req.body.name,
   "entry.959945629" : req.body.desc,
-  "entry.2073523555" : req.body.start,
-  "entry.1949851848" : req.body.end,
+  "entry.2073523555" : format_date(req.body.start),
+  "entry.1949851848" : format_date(req.body.end),
   "entry.1836361517" : req.body.type,
   "entry.1678818035" : req.body.streetcut,
   "entry.1974169754" : req.body.daysinrow,
@@ -110,3 +110,8 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
 });
+
+function format_date(date){
+var arr = date.split("/")
+return arr[2] + '-' + arr[0] + '-' + arr[1] 
+}
