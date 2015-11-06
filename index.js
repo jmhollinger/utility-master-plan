@@ -12,26 +12,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'jade');
 
 app.use(stormpath.init(app, {
-  website: true
+    web: {
+    login: {
+      enabled: true
+    },
+    logout: {
+      enabled: true
+    },
+    register: {
+      enabled: false
+    }
+  }
 }));
 
-app.get('/', stormpath.groupsRequired(['utilities', 'admins'], false), function (req, res) {
-  res.render('landing');
+app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+  res.render('landing', {"user" : req.user.email });
 });
 
-app.get('/cgas', stormpath.groupsRequired(['columbia_gas', 'admins'], false), function (req, res) {
-  res.render('form', {"utility": "Columbia Gas"});
+app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (req, res) {
+  res.render('form', {"utility": "Columbia Gas", "user": req.user.email});
 });
 
-app.get('/ku', stormpath.groupsRequired(['ku', 'admins'], false), function (req, res) {
+app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky Utilities"});
 });
 
-app.get('/kawc', stormpath.groupsRequired(['kawc', 'admins'], false), function (req, res) {
+app.get('/kawc', stormpath.groupsRequired(['KAWC', 'Admins'], false), function (req, res) {
   res.render('form', {"utility": "Kentucky American Water Company"});
 });
 
-app.get('/crowncastle', stormpath.groupsRequired(['crown_castle', 'admins'], false), function (req, res) {
+app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], false), function (req, res) {
   res.render('form', {"utility": "Crown Castle"});
 });
 
