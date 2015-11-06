@@ -26,11 +26,11 @@ app.use(stormpath.init(app, {
 }));
 
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-  res.render('landing', {"user" : req.user.email });
+  res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname });
 });
 
 app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Columbia Gas", "user": req.user.email});
+  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname });
 });
 
 app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
