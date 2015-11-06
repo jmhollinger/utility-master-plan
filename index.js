@@ -26,23 +26,23 @@ app.use(stormpath.init(app, {
 }));
 
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-  res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname });
+  res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName });
 });
 
 app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname });
+  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName  });
 });
 
 app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Kentucky Utilities", "user": req.user.givenName + ' ' + req.user.surname });
+  res.render('form', {"utility": "Kentucky Utilities", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName  });
 });
 
 app.get('/kawc', stormpath.groupsRequired(['KAWC', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Kentucky American Water Company", "user": req.user.givenName + ' ' + req.user.surname });
+  res.render('form', {"utility": "Kentucky American Water Company", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName  });
 });
 
 app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname });
+  res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName });
 });
 
 app.post('/submit', function (req, res) {
