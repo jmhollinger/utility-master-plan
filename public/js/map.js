@@ -48,7 +48,7 @@ function initialize(){
     var p_array = line.getPath().getArray()
     $.each(p_array, function( index, value ) {
       var temp = []
-      temp.push(value.lat(), value.lng())
+      temp.push(value.lng(), value.lat())
       points.push(temp)
       return points
     });
