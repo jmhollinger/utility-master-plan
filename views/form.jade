@@ -9,6 +9,7 @@ html(lang='en')
     link(rel='icon', href='')
     title Utility Master Plan Submittal - Lexington, KY
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/bootstrap-datepicker3.min.css')
     link(href='http://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='css/custom.css')
     //if lt IE 9
@@ -51,7 +52,7 @@ html(lang='en')
           .form-group
             label Project Description
             textarea#desc.form-control(name='desc', data-error='This field is required.' required)
-          .row
+          #dates.row
             .form-group.col-sm-6
               label Start Date
               input#start.form-control(name='start', type='date', data-error='This field is required.' required)
@@ -88,5 +89,6 @@ html(lang='en')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
     script(src='js/jquery.validate.min.js')
+    script(src='js/bootstrap-datepicker.min.js')
     script(src='js/map.js')
     script(src='js/form.js')

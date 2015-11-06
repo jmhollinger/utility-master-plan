@@ -27,3 +27,6 @@ $("#project-form").validate(
     coordinates: {required: 'Please draw the location on the map.'}
    } 
 });
+
+$('#dates input').datepicker({
+});
