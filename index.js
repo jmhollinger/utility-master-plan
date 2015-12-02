@@ -138,7 +138,7 @@ var properties = {
         "Phone" : req.body.submitter,
         "Name" : req.body.name,
         "Description" : req.body.desc,
-        "Impacts" : req.body.impacts
+        "Impacts" : req.body.impacts,
         "StartDate" : req.body.start,
         "EndDate" : req.body.end,
         "Type" : req.body.type,
