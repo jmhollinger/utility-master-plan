@@ -47,7 +47,7 @@ app.get('/kywired', stormpath.groupsRequired(['KyWired', 'Admins'], false), func
 });
 
 app.get('/level3', stormpath.groupsRequired(['Level3', 'Admins'], false), function (req, res) {
-  res.render('form', {"utility": "Level 3 Communications", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone' : 'test-data' });
+  res.render('form', {"utility": "Level 3 Communications", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone' : req.user.customData.phone });
 });
 
 app.get('/lfucg-ss', stormpath.groupsRequired(['LFUCG-SS', 'Admins'], false), function (req, res) {
