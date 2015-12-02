@@ -133,28 +133,40 @@ var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'
 
 var properties = {
         "Utility" : req.body.utility,
-        "SubmittedBy" : req.body.submitter,
+        "Contact" : req.body.submitter,
+        "Email" : req.body.submitter,
+        "Phone" : req.body.submitter,
         "Name" : req.body.name,
         "Description" : req.body.desc,
+        "Impacts" : req.body.impacts
         "StartDate" : req.body.start,
         "EndDate" : req.body.end,
         "Type" : req.body.type,
         "StreetCut" : req.body.streetcut,
-        "DaysinROW" : req.body.daysinrow
+        "DaysinROW" : req.body.daysinrow,
+        "Street" : req.body.street,
+        "1st Intersection" : req.body.crossstreet1,
+        "2nd Intersection" : req.body.crossstreet2
       }
 
 var feature = '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
 
 var data_google = {
   "entry.372192304" : req.body.utility,
-  "entry.1854949369" : req.body.submitter, 
+  "entry.1854949369" : req.body.contact,
+  "entry.200295644" : req.body.email,
+  "entry.964881409" : req.body.phone,
   "entry.1791471663" : req.body.name,
   "entry.959945629" : req.body.desc,
+  "entry.640114638" : req.body.impacts,
   "entry.2073523555" : format_date(req.body.start),
   "entry.1949851848" : format_date(req.body.end),
   "entry.1836361517" : req.body.type,
   "entry.1678818035" : req.body.streetcut,
   "entry.1974169754" : req.body.daysinrow,
+  "entry.995078440" : req.req.body.street,
+  "entry.215094489" : req.req.body.crossstreet1,
+  "entry.493746314" : req.req.body.crossstreet2,
   "entry.2073488365" : feature
 }
 
@@ -164,15 +176,20 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
       {
         "OriginURL" : req.headers.referer,
         "Utility" : req.body.utility,
-        "Submitter" : req.body.submitter,
+        "Contact" : req.body.submitter,
+        "Email" : req.body.submitter,
+        "Phone" : req.body.submitter,
         "Name" : req.body.name,
         "Description" : req.body.desc,
+        "Impacts" : req.body.impacts
         "StartDate" : req.body.start,
         "EndDate" : req.body.end,
         "Type" : req.body.type,
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow,
-        "Coordinates" : req.body.coordinates,
+        "Street" : req.body.street,
+        "1st Intersection" : req.body.crossstreet1,
+        "2nd Intersection" : req.body.crossstreet2,
         "GoogleResponse" : httpResponse.statusCode,
         "Feature" : feature
           }
