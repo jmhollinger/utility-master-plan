@@ -48,7 +48,7 @@ html(lang='en')
               input#submitter.form-control(name='submitter', value= user, type='text', required)
             .form-group.col-sm-4
               label Email
-              input#email.form-control(name='email', value= email, type='text', readonly, required)
+              input#email.form-control(name='email', value= email, type='text', required)
             .form-group.col-sm-4
               label Phone
               input#phone.form-control(name='phone', value= phone, type='text', required)
@@ -106,7 +106,7 @@ html(lang='en')
             label Location
             input#coordinates.form-control(name='coordinates', type='text', readonly, required)
           .form-group
-            button#submit.btn.btn-lg.btn-success(type='submit') Submit Project
+            button#submit.btn.btn-lg.btn-success.btn-fill(type='submit') Submit Project
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
