@@ -39,14 +39,20 @@ html(lang='en')
         form#project-form.form(action='submit', method='post')
           h3 Project Information
           h5 Please fill out the form below for each project on your master plan for the coming year. All fields are required.
-          .row
-            .form-group.col-sm-6
+          .form-group
               label Utility
               input#utility.form-control(name='utility', value= utility, type='text', readonly, required)
-            .form-group.col-sm-6
+          .row
+            .form-group.col-sm-4
               label Submitted By
-              input#utility.form-control(name='submitter', value= user, type='text', required)
-          .form-group.has-feedback
+              input#submitter.form-control(name='submitter', value= user, type='text', required)
+            .form-group.col-sm-4
+              label Email
+              input#email.form-control(name='email', value= email, type='text', readonly, required)
+            .form-group.col-sm-4
+              label Phone
+              input#phone.form-control(name='phone', value= phone, type='text', required)
+          .form-group
             label Project Name
             input#name.form-control(name='name', type='text', required)
           .form-group
@@ -75,8 +81,24 @@ html(lang='en')
               label Days in ROW?
               input#Days.form-control(name='daysinrow', type='number', required)
           h3 Project Location
-          h5 Please use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
-          .col-sm-12  
+          h5 Please select the street and cross streets and use the line tool in the top left corner of the map to draw the location of your project. To complete the line click the last point. Please be as accurate as possible with your drawing.
+          .row
+            .form-group.col-sm-4
+              label Street
+              select#street.form-control(name='street', type='text', required)
+                option Main St
+                option Vine St
+            .form-group.col-sm-4 
+              label 1st Intersection 
+              select#crossstreet1.form-control(name='cross-street-1', type='text')
+                option Main St
+                option Vine St
+            .form-group.col-sm-4
+              label 2nd Intersection 
+              select#crossstreet2.form-control(name='cross-street-2', type='text')
+                option Main St
+                option Vine St
+          .col-sm-12
             #map-canvas
             input#pac-input(placeholder='Search the map...')
             button#clear-map.btn.btn-danger(type='button') Clear Map
