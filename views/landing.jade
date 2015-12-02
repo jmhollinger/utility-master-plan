@@ -36,14 +36,31 @@ html(lang='en')
     .container
       .col-sm-12
         h4 Select your utility:
-        .form-group
-          a.btn.btn-success(href='/ku') Kentucky Utilities
-        .form-group
-          a.btn.btn-success(href='/kawc') Kentucky American Water Company
-        .form-group
-          a.btn.btn-success(href='/cgas') Columbia Gas
-        .form-group
-          a.btn.btn-success(href='/crowncastle') Crown Castle 
+        .row
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/cgas') Columbia Gas
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/crowncastle') Crown Castle
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/crowncastle') DataLink
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/kawc') Kentucky American Water Company
+        .row
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/ku') Kentucky Utilities
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/crowncastle') Kentucky Wired Network
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/level3') Level 3 Communications
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/lfucg-ss') LFUCG - Sanitary Sewers
+        .row
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/twc') Time Warner
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/windstream') Windstream
+          .form-group.col-sm-3
+            a.btn.btn-success(href='/other') Other
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
