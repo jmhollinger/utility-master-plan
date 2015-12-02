@@ -56,8 +56,11 @@ html(lang='en')
             label Project Name
             input#name.form-control(name='name', type='text', required)
           .form-group
-            label Project Description
+            label Describe the nature of the project
             textarea#desc.form-control(name='desc', required)
+          .form-group
+            label Describe how this project affects other utilities and city infrastructure
+            textarea#impacts.form-control(name='impacts', required)
           #dates.row
             .form-group.col-sm-6
               label Start Date
