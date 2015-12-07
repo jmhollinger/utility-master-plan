@@ -114,6 +114,14 @@ app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], fals
   res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/delta', stormpath.groupsRequired(['Delta', 'Admins'], false), function (req, res) {
+  var user_phone = ''
+  req.user.getCustomData(function(err, data){
+    user_phone = data.phone
+  })
+  res.render('form', {"utility": "Delta Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+});
+
 app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
