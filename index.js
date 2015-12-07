@@ -153,8 +153,8 @@ var properties = {
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow,
         "Street" : req.body.street,
-        "1stIntersection" : req.body.crossstreet1,
-        "2ndIntersection" : req.body.crossstreet2
+        "Intersection1" : req.body.crossstreet1,
+        "Intersection2" : req.body.crossstreet2
       }
 
 var feature = '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
@@ -196,8 +196,8 @@ request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse'
         "StreetCut" : req.body.streetcut,
         "DaysinROW" : req.body.daysinrow,
         "Street" : req.body.street,
-        "1stIntersection" : req.body.crossstreet1,
-        "2ndIntersection" : req.body.crossstreet2,
+        "Intersection1" : req.body.crossstreet1,
+        "Intersection2" : req.body.crossstreet2,
         "GoogleResponse" : httpResponse.statusCode,
         "Feature" : feature
           }
