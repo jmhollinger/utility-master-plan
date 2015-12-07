@@ -114,7 +114,7 @@ app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], fals
   res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
-app.get('/crowncastle', stormpath.groupsRequired(['Other', 'Admins'], false), function (req, res) {
+app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
@@ -133,9 +133,9 @@ var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'
 
 var properties = {
         "Utility" : req.body.utility,
-        "Contact" : req.body.submitter,
-        "Email" : req.body.submitter,
-        "Phone" : req.body.submitter,
+        "Contact" : req.body.contact,
+        "Email" : req.body.email,
+        "Phone" : req.body.phone,
         "Name" : req.body.name,
         "Description" : req.body.desc,
         "Impacts" : req.body.impacts,
@@ -171,13 +171,13 @@ var data_google = {
 }
 
 request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){
-  if (httpResponse.statusCode === 200) {
+  if (httpResponse.statusCode === 200 && body.match("Your response has been recorded.")) {
     res.render('success',
       {
         "OriginURL" : req.headers.referer,
         "Utility" : req.body.utility,
-        "Contact" : req.body.submitter,
-        "Email" : req.body.submitter,
+        "Contact" : req.body.contact,
+        "Email" : req.body.email,
         "Phone" : req.body.phone,
         "Name" : req.body.name,
         "Description" : req.body.desc,
