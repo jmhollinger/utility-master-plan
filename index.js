@@ -171,7 +171,6 @@ var data_google = {
 }
 
 request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){
-  console.log(httpResponse.body) 
   if (httpResponse.statusCode === 200) {
     res.render('success',
       {
