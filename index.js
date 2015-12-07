@@ -170,15 +170,16 @@ var data_google = {
   "entry.2073488365" : feature
 }
 
-request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){ 
-  if (httpResponse.statusCode === 200 && body.match("Your response has been recorded.")) {
+request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){
+  console.log(httpResponse.body) 
+  if (httpResponse.statusCode === 200) {
     res.render('success',
       {
         "OriginURL" : req.headers.referer,
         "Utility" : req.body.utility,
         "Contact" : req.body.submitter,
         "Email" : req.body.submitter,
-        "Phone" : req.body.submitter,
+        "Phone" : req.body.phone,
         "Name" : req.body.name,
         "Description" : req.body.desc,
         "Impacts" : req.body.impacts,
