@@ -164,9 +164,9 @@ var data_google = {
   "entry.1836361517" : req.body.type,
   "entry.1678818035" : req.body.streetcut,
   "entry.1974169754" : req.body.daysinrow,
-  "entry.995078440" : req.req.body.street,
-  "entry.215094489" : req.req.body.crossstreet1,
-  "entry.493746314" : req.req.body.crossstreet2,
+  "entry.995078440" : req.body.street,
+  "entry.215094489" : req.body.crossstreet1,
+  "entry.493746314" : req.body.crossstreet2,
   "entry.2073488365" : feature
 }
 
