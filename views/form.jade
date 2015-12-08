@@ -88,22 +88,13 @@ html(lang='en')
           .row
             .form-group.col-sm-4
               label Street
-              select#street.form-control(name='street', type='text', required)
-                option
-                each val in streets 
-                 option= val
+              input#street.form-control.typeahead(name='street', type='text', required)
             .form-group.col-sm-4 
               label 1st Intersection 
-              select#crossstreet1.form-control(name='crossstreet1', type='text')
-                option
-                each val in streets 
-                 option= val
+              input#crossstreet1.form-control.typeahead(name='crossstreet1', type='text')
             .form-group.col-sm-4
               label 2nd Intersection 
-              select#crossstreet2.form-control(name='crossstreet2', type='text')
-                option
-                each val in streets 
-                 option= val
+              input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text')
           .col-sm-12
             #map-canvas
             input#pac-input(placeholder='Search the map...')
@@ -118,5 +109,6 @@ html(lang='en')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&sensor=true&libraries=places,drawing&language=en')
     script(src='js/jquery.validate.min.js')
     script(src='js/bootstrap-datepicker.min.js')
+    script(src='js/typeahead.jquery.min.js')
     script(src='js/map.js')
     script(src='js/form.js')
