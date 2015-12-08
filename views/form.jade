@@ -89,18 +89,21 @@ html(lang='en')
             .form-group.col-sm-4
               label Street
               select#street.form-control(name='street', type='text', required)
-                option #{streets}
-                option Vine St
+                option
+                each val in streets 
+                 option= val
             .form-group.col-sm-4 
               label 1st Intersection 
               select#crossstreet1.form-control(name='crossstreet1', type='text')
-                option Main St
-                option Vine St
+                option
+                each val in streets 
+                 option= val
             .form-group.col-sm-4
               label 2nd Intersection 
               select#crossstreet2.form-control(name='crossstreet2', type='text')
-                option Main St
-                option Vine St
+                option
+                each val in streets 
+                 option= val
           .col-sm-12
             #map-canvas
             input#pac-input(placeholder='Search the map...')
