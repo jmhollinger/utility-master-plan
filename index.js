@@ -127,7 +127,7 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "", "u_readonly" : true , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.post('/submit', function (req, res) {
