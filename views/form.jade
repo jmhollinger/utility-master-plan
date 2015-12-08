@@ -39,7 +39,7 @@ html(lang='en')
           h5 Please fill out the form below for each project on your master plan for the coming year. All fields are required.
           .form-group
               label Utility
-              input#utility.form-control(name='utility', value= utility, type='text', readonly, required)
+              input#utility.form-control(name='utility', value= utility, type='text', #{u_readonly}, required)
           .row
             .form-group.col-sm-4
               label Project Contact

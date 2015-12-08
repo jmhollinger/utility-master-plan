@@ -39,7 +39,7 @@ app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
+  res.render('form', {"utility": "Columbia Gas", "u_readonly" : "readonly" ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
 app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
@@ -47,7 +47,7 @@ app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req,
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "Kentucky Utilities", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "Kentucky Utilities", "u_readonly" : "readonly" ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.get('/datalink', stormpath.groupsRequired(['DataLink', 'Admins'], false), function (req, res) {
@@ -55,7 +55,7 @@ app.get('/datalink', stormpath.groupsRequired(['DataLink', 'Admins'], false), fu
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "DataLink", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "DataLink", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
 });
 
 app.get('/kywired', stormpath.groupsRequired(['KyWired', 'Admins'], false), function (req, res) {
@@ -63,7 +63,7 @@ app.get('/kywired', stormpath.groupsRequired(['KyWired', 'Admins'], false), func
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "Kentucky Wired Network", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "Kentucky Wired Network", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
 });
 
 app.get('/level3', stormpath.groupsRequired(['Level3', 'Admins'], false), function (req, res) {
@@ -71,7 +71,7 @@ app.get('/level3', stormpath.groupsRequired(['Level3', 'Admins'], false), functi
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "Level 3 Communications", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "Level 3 Communications", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.get('/lfucg-ss', stormpath.groupsRequired(['LFUCG-SS', 'Admins'], false), function (req, res) {
@@ -79,7 +79,7 @@ app.get('/lfucg-ss', stormpath.groupsRequired(['LFUCG-SS', 'Admins'], false), fu
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "LFUCG - Sanitary Sewers", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "LFUCG - Sanitary Sewers", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
 });
 
 app.get('/windstream', stormpath.groupsRequired(['Windstream', 'Admins'], false), function (req, res) {
@@ -87,7 +87,7 @@ app.get('/windstream', stormpath.groupsRequired(['Windstream', 'Admins'], false)
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "Windstream", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "Windstream", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
 });
 
 app.get('/kawc', stormpath.groupsRequired(['KAWC', 'Admins'], false), function (req, res) {
@@ -103,7 +103,7 @@ app.get('/twc', stormpath.groupsRequired(['TWC', 'Admins'], false), function (re
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "Time Warner", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "Time Warner", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
 });
 
 app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], false), function (req, res) {
@@ -111,7 +111,7 @@ app.get('/crowncastle', stormpath.groupsRequired(['CrownCastle', 'Admins'], fals
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "Crown Castle", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "Crown Castle", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.get('/delta', stormpath.groupsRequired(['Delta', 'Admins'], false), function (req, res) {
@@ -119,7 +119,7 @@ app.get('/delta', stormpath.groupsRequired(['Delta', 'Admins'], false), function
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "Delta Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "Delta Gas", "u_readonly" : "readonly" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function (req, res) {
@@ -127,7 +127,7 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })
-  res.render('form', {"utility": "", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+  res.render('form', {"utility": "", "u_readonly" : "" , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
 app.post('/submit', function (req, res) {
