@@ -37,10 +37,11 @@ html(lang='en')
         p <strong>Street:</strong> #{Street}
         p <strong>1st Intersection:</strong> #{Intersection1}
         p <strong>2nd Intersection:</strong> #{Intersection2}
-      .col-sm-12.text-center
-        a.btn.btn-success(href= OriginURL) Submit Another Project
-      .col-sm-12.text-center
-        a.btn.btn-primary(href='/') Go to the Homepage
+      .row
+        .col-sm-6.text-center
+            a.btn.btn-success(href= OriginURL) Submit Another Project
+        .col-sm-6.text-center
+            a.btn.btn-primary(href='/') Go to the Homepage
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
