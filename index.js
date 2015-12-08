@@ -25,6 +25,8 @@ app.use(stormpath.init(app, {
   }
 }));
 
+var streetnames = ["Main", "Vine", "Taylor", "Loch Lomond", "Fontaine"]
+
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
@@ -39,7 +41,7 @@ app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone  });
+  res.render('form', {"utility": "Columbia Gas", "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone, 'streets' : streetnames});
 });
 
 app.get('/ku', stormpath.groupsRequired(['KU', 'Admins'], false), function (req, res) {
