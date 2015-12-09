@@ -94,11 +94,13 @@ $('#street').blur(function(){
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function getLatLng (name) {
+function getLatLng (streetname) {
 var latlng = []
   $.each(streets.streets, function( index, value ) {
-  if (value.name === name){latlng = [value.lat, value.lng, 16]}
-  else {latlng = [38.047594, -84.496428, 12]}
-})
+    if (value.name === streetname){
+      latlng = [value.lat, value.lng, 16]
+      return false
+    }
+  })
 return latlng
 }
