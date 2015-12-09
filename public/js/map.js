@@ -1,10 +1,9 @@
 function initialize(){
-
-  //Go ahead and create an empty marker set for address searching.
-  var markers = [];
-  
+ 
   //Set your basic options.
   var mapOptions = {
+    zoom: 12,
+    center: {lat: 38.047594, lng: -84.496428},
     overviewMapControl:true,
     rotateControl:true,
     scaleControl:true,
@@ -79,77 +78,27 @@ function initialize(){
 
   })
     
-    console.log(points_obj)
 
   });
 
+$('#street').blur(function(){
+  var coor = getLatLng($(this).val())
+  if(coor[0]){
+    map.setCenter(new google.maps.LatLng(coor[0], coor[1]))  
+    map.setZoom(coor[2])
+  }
+  else {}
+    })
 
-
-  //Set default map bounds, expressed as southwest and northeast points.
-  var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(38.063635376296816,-84.53970909118652),
-      new google.maps.LatLng(38.003737861469666,-84.44426536560059)
-      );
-  
-  map.fitBounds(defaultBounds);
-
-  
-  //This is the beginning of the address search stuff. 
-  // Create the search box and link it to the HTML element.
-    var input = /** @type {HTMLInputElement} */(
-        document.getElementById('pac-input'));
-
-    var searchBox = new google.maps.places.SearchBox(
-      /** @type {HTMLInputElement} */(input));
-
-    // Listen for search box changes.
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
-      var places = searchBox.getPlaces();
-
-      if (places.length == 0) {
-        return;
-      }
-      for (var i = 0, marker; marker = markers[i]; i++) {
-        marker.setMap(null);
-      }
-
-      // For each place, get the icon, place name, and location.
-      markers = [];
-      var bounds = new google.maps.LatLngBounds();
-      for (var i = 0, place; place = places[i]; i++) {
-        var image = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
-        };
-
-        // Create a marker for each place.
-        var marker = new google.maps.Marker({
-          map: map,
-          icon: image,
-          title: place.name,
-          position: place.geometry.location
-        });
-
-
-        markers.push(marker);
-
-        bounds.extend(place.geometry.location);
-      }
-      
-      map.fitBounds(bounds);
-      //Set zoom level for when an address is selected.
-      map.setZoom(14)
-        });
-    
-    // Bias the SearchBox results towards places that are within the bounds of the
-    // current map's viewport.
-    google.maps.event.addListener(map, 'bounds_changed', function() {
-      var bounds = map.getBounds();
-      searchBox.setBounds(bounds);
-    });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+function getLatLng (name) {
+var latlng = []
+  $.each(streets.streets, function( index, value ) {
+  if (value.name === name){latlng = [value.lat, value.lng, 16]}
+  else {latlng = [38.047594, -84.496428, 12]}
+})
+return latlng
+}
