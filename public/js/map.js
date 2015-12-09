@@ -81,7 +81,8 @@ function initialize(){
 
   });
 
-$('#street').blur(function(){
+
+$('#street').bind('typeahead:selected', function() {
   var coor = getLatLng($(this).val())
   if(coor[0]){
     map.setCenter(new google.maps.LatLng(coor[0], coor[1]))  
