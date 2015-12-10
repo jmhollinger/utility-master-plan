@@ -84,8 +84,14 @@ function initialize(){
 
 $('#street').bind('typeahead:selected', function() {
   var coor = getLatLng($(this).val())
+  var point  = new google.maps.LatLng(coor[0], coor[1])
   if(coor[0]){
-    map.setCenter(new google.maps.LatLng(coor[0], coor[1]))  
+    new google.maps.Marker({
+    position: point,
+    map: map,
+    title: $(this).val()
+  })
+    map.setCenter(point)  
     map.setZoom(coor[2])
   }
   else {}
@@ -99,7 +105,7 @@ function getLatLng (streetname) {
 var latlng = []
   $.each(streets.streets, function( index, value ) {
     if (value.name === streetname){
-      latlng = [value.lat, value.lng, 16]
+      latlng = [value.lat, value.lng, 19]
       return false
     }
   })
