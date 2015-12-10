@@ -100,7 +100,7 @@ function getLatLng (streetname) {
 var latlng = []
   $.each(streets.streets, function( index, value ) {
     if (value.name === streetname){
-      latlng = [value.lat, value.lng, 19]
+      latlng = [value.lat, value.lng, 16]
       return false
     }
   })
