@@ -86,11 +86,6 @@ $('#street').bind('typeahead:selected', function() {
   var coor = getLatLng($(this).val())
   var point  = new google.maps.LatLng(coor[0], coor[1])
   if(coor[0]){
-    new google.maps.Marker({
-    position: point,
-    map: map,
-    title: $(this).val()
-  })
     map.setCenter(point)  
     map.setZoom(coor[2])
   }
