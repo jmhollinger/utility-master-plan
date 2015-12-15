@@ -91,13 +91,13 @@ html(lang='en')
           .row
             .form-group.col-sm-4
               label Street
-              input#street.form-control.typeahead(name='street', type='text', required)
+              input#street.form-control.typeahead(name='street', type='text', class='streetcheck', required)
             .form-group.col-sm-4 
               label 1st Intersection 
-              input#crossstreet1.form-control.typeahead(name='crossstreet1', type='text')
+              input#crossstreet1.form-control.typeahead(name='crossstreet1', type='text', class='streetcheck', required)
             .form-group.col-sm-4
               label 2nd Intersection 
-              input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text')
+              input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text', class='streetcheck', required)
           h3 Project Location
           h5 Please use the line tool in the top left corner of the map to draw your project. Double-click or click the last point to complete the line. Please be as accurate as possible.
           .col-sm-12

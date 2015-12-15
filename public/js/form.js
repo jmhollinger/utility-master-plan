@@ -17,6 +17,15 @@ $.validator.setDefaults({
     }
 })
 
+$.validator.addMethod("streetcheck", function(value) {
+    var in_array = $.inArray(value, nameArray);
+    if (in_array == -1) {
+        return false;
+    }else{
+        return true;
+    }
+}, "Please enter a valid street name.");
+
 $("#project-form").validate(
   {rules: {
     start: {required: true, date: true},
@@ -32,6 +41,7 @@ $("#project-form").validate(
 $('#dates input').datepicker({
 });
 
+$("#project-form").validate();
 
 //typeahead.js for street lookups
 var substringMatcher = function(strs) {
