@@ -87,23 +87,23 @@ html(lang='en')
               label Days in ROW?
               input#Days.form-control(name='daysinrow', type='number', required)
           h3 Project Street
-          h5 Please select the street you will be working on, as well as the intersections you will be working between.
+          h5 Please select the street you will be working on, as well as the intersections you will be working between (if applicable).
           .row
             .form-group.col-sm-4
               label Street
               input#street.form-control.typeahead(name='street', type='text', class='streetcheck', required)
             .form-group.col-sm-4 
-              label 1st Intersection 
+              label 1st Intersection               
               input#crossstreet1.form-control.typeahead(name='crossstreet1', type='text', class='streetcheck')
             .form-group.col-sm-4
-              label 2nd Intersection 
+              label 2nd Intersection (If the end of a road type "End") 
               input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text', class='streetcheck')
           h3 Project Location
-          h5 Please use the line tool in the top left corner of the map to draw your project. Double-click or click the last point to complete the line. Please be as accurate as possible.
+          h5 Please use the line tool in the top left corner of the map to draw your project. Double-click or click the last point to complete the line. The search box can be used to locate a specific address. Please be as accurate as possible.
           .col-sm-12
             #map-canvas
             form
-              input#pac-input(placeholder='Search the map...')
+              input#pac-input(placeholder='Search for an address...')
             button#clear-map.btn.btn-danger(type='button') Clear Map
           .form-group
             label Location

@@ -5,15 +5,14 @@ function initialize(){
 
   //Set your basic options.
   var mapOptions = {
+    tilt: 0,
     zoom: 12,
     center: {lat: 38.047594, lng: -84.496428},
     overviewMapControl:true,
     rotateControl:true,
     scaleControl:true,
     mapTypeControl: true,
-    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR, position:google.maps.ControlPosition.TOP_CENTER},
     zoomControl: true,
-    zoomControlOptions: {style: google.maps.ZoomControlStyle.DEFAULT}
     };
 
   //Fill up the map-canvas.
