@@ -91,13 +91,13 @@ html(lang='en')
           .row
             .form-group.col-sm-4
               label Street
-              input#street.form-control.typeahead(name='street', type='text', required)
+              input#street.form-control.typeahead.streetchecker(name='street', type='text', required)
             .form-group.col-sm-4 
               label 1st Intersection               
-              input#crossstreet1.form-control.typeahead(name='crossstreet1', type='text', required)
+              input#crossstreet1.form-control.typeahead.streetchecker(name='crossstreet1', type='text', required)
             .form-group.col-sm-4
               label 2nd Intersection (If the end of a road type "End") 
-              input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text', required)
+              input#crossstreet2.form-control.typeahead.streetchecker(name='crossstreet2', type='text', required)
           h3 Project Location
           h5 Please use the line tool at the top of the map to draw your project. Double-click or click the last point to complete the line. The search box can be used to locate a specific address. Please be as accurate as possible.
           .col-sm-12

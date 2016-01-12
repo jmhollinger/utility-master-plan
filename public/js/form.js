@@ -18,14 +18,10 @@ $.validator.setDefaults({
 })
 
 //Validate street names
-$.validator.addMethod("streetcheck", function(value) {
-    var in_array = $.inArray(value, nameArray);
-    if (in_array == -1) {
-        return false;
-    }else{
-        return true;
-    }
-}, "Please enter a valid street name.");
+$.validator.addMethod("streetchecker", function(value) {
+    var streets = nameArray
+    return $.inArray(value, streets) != -1;
+}, "Please enter a valid street");
 
 //Validate start date, end date, days in ROW, and coordinates.
 $("#project-form").validate(
@@ -43,8 +39,6 @@ $("#project-form").validate(
 //Datepicker
 $('#dates input').datepicker({
 });
-
-$("#project-form").validate();
 
 //typeahead.js for street lookups
 var substringMatcher = function(strs) {
