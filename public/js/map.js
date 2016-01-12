@@ -1,5 +1,5 @@
 function initialize(){
-  
+
   //For address searching.
   var markers = [];
 
@@ -145,7 +145,7 @@ $('#street').bind('typeahead:selected', function() {
       
       map.fitBounds(bounds);
       //Set zoom level for when an address is selected.
-      map.setZoom(14)
+      map.setZoom(16)
         });
     
     // Bias the SearchBox results towards places that are within the bounds of the
