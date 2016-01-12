@@ -1,5 +1,8 @@
 function initialize(){
- 
+  
+  //For address searching.
+  var markers = [];
+
   //Set your basic options.
   var mapOptions = {
     zoom: 12,

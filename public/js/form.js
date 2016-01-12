@@ -21360,8 +21360,8 @@ var streets =
   },
   {
     "name":"End",
-    "lat":,
-    "lng":
+    "lat": null,
+    "lng": null
   }
 ]
 }
