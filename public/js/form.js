@@ -1,5 +1,5 @@
 //Basic Form Validation
-/*$.validator.setDefaults({
+$.validator.setDefaults({
     highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');
     },
@@ -15,7 +15,7 @@
             error.insertAfter(element);
         }
     }
-})*/
+})
 
 //Validate street names
 $.validator.addMethod("streetchecker", function(value) {
