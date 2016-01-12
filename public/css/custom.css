@@ -22,7 +22,7 @@ padding: 0px;
 #clear-map {
     text-overflow: ellipsis;
     position: absolute;
-    left: 50%;
+    left: 45.5%;
     top: 40px;
     z-index: 99;
 }
