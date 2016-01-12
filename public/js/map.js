@@ -39,7 +39,7 @@ function initialize(){
     drawingManager.setOptions({
       drawingControl: true,
       drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_LEFT,
+      position: google.maps.ControlPosition.TOP_CENTER,
       drawingModes: [
       ]}
     });
@@ -72,7 +72,7 @@ function initialize(){
     drawingManager.setOptions({
       drawingControl: true,
       drawingControlOptions: {
-      position: google.maps.ControlPosition.TOP_LEFT,
+      position: google.maps.ControlPosition.TOP_CENTER,
       drawingModes: [
       google.maps.drawing.OverlayType.POLYLINE
       ]}
