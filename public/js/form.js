@@ -1,4 +1,4 @@
-//Form Validation
+//Basic Form Validation
 $.validator.setDefaults({
     highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');
@@ -17,6 +17,7 @@ $.validator.setDefaults({
     }
 })
 
+//Validate street names
 $.validator.addMethod("streetcheck", function(value) {
     var in_array = $.inArray(value, nameArray);
     if (in_array == -1) {
@@ -26,6 +27,7 @@ $.validator.addMethod("streetcheck", function(value) {
     }
 }, "Please enter a valid street name.");
 
+//Validate start date, end date, days in ROW, and coordinates.
 $("#project-form").validate(
   {rules: {
     start: {required: true, date: true},
@@ -38,6 +40,7 @@ $("#project-form").validate(
    } 
 });
 
+//Datepicker
 $('#dates input').datepicker({
 });
 
@@ -66,6 +69,8 @@ var substringMatcher = function(strs) {
   };
 };
 
+
+//Streets data
 var streets = 
 {"streets" : [
   {
@@ -21352,10 +21357,16 @@ var streets =
     "name":"Zorn Ct",
     "lat":38.09139642,
     "lng":-84.45570392
+  },
+  {
+    "name":"End",
+    "lat":,
+    "lng":
   }
 ]
 }
 
+//Covert streets data for typeahead.
 function ttConverter (){
   var arr = []
   $.each(streets.streets, function( index, value ) {
@@ -21366,6 +21377,7 @@ function ttConverter (){
 
 var nameArray = ttConverter(streets)
 
+//Typeahead
 $('.typeahead').typeahead({
   hint: true,
   highlight: true,
