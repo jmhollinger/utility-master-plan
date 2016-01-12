@@ -99,12 +99,12 @@ html(lang='en')
               label 2nd Intersection (If the end of a road type "End") 
               input#crossstreet2.form-control.typeahead(name='crossstreet2', type='text', class='streetcheck')
           h3 Project Location
-          h5 Please use the line tool in the top left corner of the map to draw your project. Double-click or click the last point to complete the line. The search box can be used to locate a specific address. Please be as accurate as possible.
+          h5 Please use the line tool at the top of the map to draw your project. Double-click or click the last point to complete the line. The search box can be used to locate a specific address. Please be as accurate as possible.
           .col-sm-12
             #map-canvas
             form
               input#pac-input(placeholder='Search for an address...')
-            button#clear-map.btn.btn-danger(type='button') Clear Map
+            button#clear-map.btn.btn-danger(type='button') Clear Lines
           .form-group
             label Location
             input#coordinates.form-control(name='coordinates', type='text', readonly, required)
