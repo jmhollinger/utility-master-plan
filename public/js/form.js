@@ -36,6 +36,14 @@ $("#project-form").validate(
    } 
 });
 
+//Prevent address lookup from submitting form.
+$('#pac-input').keypress(function (key){
+  if(key.keyCode === 13){
+    key.preventDefault()
+    }
+  else {}
+})
+
 //Datepicker
 $('#dates input').datepicker({
 });
