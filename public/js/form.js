@@ -1,4 +1,34 @@
-//Basic Form Validation
+$(document).ready(function() {$('#project-form').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        trigger: 'input change keyup',
+        fields: {
+          utility: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          contact: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          email: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          phone: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          name: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          desc: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          impacts: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          start: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          end: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          type: {validators: {notEmpty: {message: 'Contact Person cannot be left blank'}}},
+          streetcut: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          daysinrow: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          street: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          crossstreet1: {validators: {notEmpty: {message: 'Address cannot be left blank.'}}},
+          crossstreet2: {validators: {notEmpty: {message: 'Cannot be blank.'}}},
+          coordinates: {validators: {notEmpty: {message: 'Cannot be blank.'}}}
+        }
+        });
+});
+
+
+/*Basic Form Validation
 $.validator.setDefaults({
     highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');
@@ -35,6 +65,7 @@ $("#project-form").validate(
     coordinates: {required: 'Please draw the location on the map.'}
    } 
 });
+*/
 
 //Prevent address lookup from submitting form.
 $('#pac-input').keypress(function (key){
