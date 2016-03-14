@@ -122,6 +122,14 @@ app.get('/delta', stormpath.groupsRequired(['Delta', 'Admins'], false), function
   res.render('form', {"utility": "Delta Gas", "u_readonly" : true , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/att', stormpath.groupsRequired(['att', 'Admins'], false), function (req, res) {
+  var user_phone = ''
+  req.user.getCustomData(function(err, data){
+    user_phone = data.phone
+  })
+  res.render('form', {"utility": "AT&T", "u_readonly" : true , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
+});
+
 app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
