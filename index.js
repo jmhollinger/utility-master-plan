@@ -33,6 +33,13 @@ app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function 
   res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
+app.get('/lightower', stormpath.groupsRequired(['lightower', 'Admins'], false), function (req, res) {
+  var user_phone = ''
+  req.user.getCustomData(function(err, data){
+    user_phone = data.phone
+  })  
+  res.render('form', {"utility": "Lightower", "u_readonly" : true ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
+});
 
 app.get('/cgas', stormpath.groupsRequired(['CGAS', 'Admins'], false), function (req, res) {
   var user_phone = ''
