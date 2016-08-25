@@ -41,7 +41,7 @@ app.get('/lightower', stormpath.groupsRequired(['Lightower', 'Admins'], false), 
   res.render('form', {"utility": "Lightower", "u_readonly" : true ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
-app.get('/mobilitie', stormpath.groupsRequired(['KY-Backhaul', 'Admins'], false), function (req, res) {
+app.get('/ky-backhaul', stormpath.groupsRequired(['KY-Backhaul', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
