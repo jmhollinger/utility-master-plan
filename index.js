@@ -33,7 +33,7 @@ app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function 
   res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
-app.get('/lightower', stormpath.groupsRequired(['lightower', 'Admins'], false), function (req, res) {
+app.get('/lightower', stormpath.groupsRequired(['Lightower', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
@@ -41,12 +41,12 @@ app.get('/lightower', stormpath.groupsRequired(['lightower', 'Admins'], false), 
   res.render('form', {"utility": "Lightower", "u_readonly" : true ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
-app.get('/mobilitie', stormpath.groupsRequired(['mobilitie', 'Admins'], false), function (req, res) {
+app.get('/mobilitie', stormpath.groupsRequired(['KY-Backhaul', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
-  res.render('form', {"utility": "mobilitie", "u_readonly" : true ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
+  res.render('form', {"utility": "KY Backhaul", "u_readonly" : true ,"user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
 
@@ -138,7 +138,7 @@ app.get('/delta', stormpath.groupsRequired(['Delta', 'Admins'], false), function
   res.render('form', {"utility": "Delta Gas", "u_readonly" : true , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
-app.get('/att', stormpath.groupsRequired(['att', 'Admins'], false), function (req, res) {
+app.get('/att', stormpath.groupsRequired(['ATT', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
