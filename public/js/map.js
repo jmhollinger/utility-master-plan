@@ -16,98 +16,51 @@ function initialize(){
 
 var infowindow = new google.maps.InfoWindow();
 
-  var usaStyle = {
-    strokeWeight: 0,
-    fillColor: '#555',
-    fillOpacity: '0.4'
-    };
 
- var purchased = {
-    strokeColor: '#16a085',
-    strokeWeight: 2,
-    fillColor: '#16a085',
-    fillOpacity: '0.5'
-    };
-
-  var donated = {
+  var blue = {
     strokeColor: '#2980b9',
     strokeWeight: 2,
     fillColor: '#2980b9',
     fillOpacity: '0.5'
     };
 
-   var underContract = {
-    strokeColor: '#2c3e50',
-    strokeWeight: 2,
-    fillColor: '#2c3e50',
-    fillOpacity: '0.5'
-    };
+  var plan = new google.maps.Data()
 
-  var pdr = new google.maps.Data()
-  var usa = new google.maps.Data()
+//Get Master Plan Data
+var public_spreadsheet_url = "1EAVolIEUmF9-1pIbybOs9-LLiagiaa3yTRUeSLb_dck"
 
-  pdr.loadGeoJson('data/pdr.geojson')
-  usa.loadGeoJson('data/usa.geojson')
-  
-  pdr.setStyle(function(feature){
-  var s = feature.getProperty('Status')
-  var pt = feature.getProperty('FundingTyp')
+var tabletop = Tabletop.init( { 
+  key: public_spreadsheet_url,          
+  simpleSheet: true,
+  callback: showInfo } )
 
-  if (s === 'Closed' && pt === 'Purchase'){return purchased}
-  else if (s === 'Closed' && pt === 'Donation') {return donated}
-  else if (s === 'Under Contract'){return underContract}	
-  else {return ''}   
+function showInfo(data, tabletop) {
+  var features = []
+  for (var i = data.length - 1; i >= 0; i--) {
+    var feature = JSON.parse(data[i].Feature)
+    features.push(feature)
+}
+ 
+  var obj = {
+  "type": "FeatureCollection",
+  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "features": features
   }
-  );
 
-  usa.setStyle(usaStyle);
+  plan.addGeoJson(obj)
 
-  pdr.setMap(map)
-  usa.setMap(map)
+ }  
+  
+  plan.setStyle(function(feature){});
+
+  plan.setStyle(blue);
+
+  plan.setMap(map)
   
 
- pdr.addListener('click', function(event) {
- var s = event.feature.getProperty('Status')
- var pt = event.feature.getProperty('FundingTyp')
- var content = ''
- 
- var purchaseInfo = '<h4 class="green-text">' + event.feature.getProperty('Address')  + '</h4>'+
-    '<h5 class="gray-text">Farm Information</h5>'+
-    '<p class="item"><strong>Application No: </strong>' + event.feature.getProperty('APPNUM') + '</p>' +
-    '<p class="item"><strong>Acreage: </strong>' + event.feature.getProperty('Acreage') + '</p>' +
-    '<p class="item"><strong>Farm Status: </strong>' + event.feature.getProperty('Status') + '</p>' +
-    '<p class="item"><strong>Acquisition Type: </strong>' + event.feature.getProperty('FundingTyp') + '</p>' +
-    
-    '<h5 class="gray-text">Purchase Information</h5>'+
-    '<p class="item"><strong>Fiscal Year: </strong>' + event.feature.getProperty('FiscalYear') + '</p>' +
-    '<p class="item"><strong>Closing Date: </strong>' + dateFormat(event.feature.getProperty('DateClosed')) + '</p>' +
-    '<p class="item"><strong>Total Easement Cost: </strong>' + numeral(event.feature.getProperty('TotalPaid')).format('$0,0.00') + '</p>' +
-    '<p class="item"><strong>Easement Cost Per Acre: </strong>' + numeral(event.feature.getProperty('PerAcre')).format('$0,0.00') + '</p>' +
-    '<p class="item"><strong>Entity Paid: </strong>' + event.feature.getProperty('EntityPaid') + '</p>'
- 	
- var donationInfo = '<h4 class="green-text">' + event.feature.getProperty('Address')  + '</h4>'+
-    '<h5 class="gray-text">Farm Information</h5>'+
-    '<p class="item"><strong>Application No: </strong>' + event.feature.getProperty('APPNUM') + '</p>' +
-    '<p class="item"><strong>Acreage: </strong>' + event.feature.getProperty('Acreage') + '</p>' +
-    '<p class="item"><strong>Farm Status: </strong>' + event.feature.getProperty('Status') + '</p>' +
-    '<p class="item"><strong>Acquisition Type: </strong>' + event.feature.getProperty('FundingTyp') + '</p>' +
-    
-    '<h5 class="gray-text">Donation Information</h5>'+
-    '<p class="item"><strong>Fiscal Year: </strong>' + event.feature.getProperty('FiscalYear') + '</p>' +
-    '<p class="item"><strong>Closing Date: </strong>' + dateFormat(event.feature.getProperty('DateClosed')) + '</p>' +
-    '<p class="item"><strong>Donating Entity: </strong>' + event.feature.getProperty('EntityPaid') + '</p>'
- 
- var underContractInfo = '<h4 class="green-text">' + event.feature.getProperty('Address')  + '</h4>'+
-    '<h5 class="gray-text">Farm Information</h5>'+
-    '<p class="item"><strong>Application No: </strong>' + event.feature.getProperty('APPNUM') + '</p>' +
-    '<p class="item"><strong>Acreage: </strong>' + event.feature.getProperty('Acreage') + '</p>' +
-    '<p class="item"><strong>Farm Status: </strong>' + event.feature.getProperty('Status') + '</p>' +
-    '<p class="item"><strong>Acquisition Type: </strong>' + event.feature.getProperty('FundingTyp') + '</p>'
+ plan.addListener('click', function(event) {
 
-  if (s === 'Closed' && pt === 'Purchase'){content = purchaseInfo}
-  else if (s === 'Closed' && pt === 'Donation') {content = donationInfo}
-  else if (s === 'Under Contract'){content = underContractInfo}	
-  else {content = 'No information available.'}   
+    var content = '' 
 
     infowindow.setContent(content)
 
