@@ -58,10 +58,21 @@ function showInfo(data, tabletop) {
   plan.setMap(map)
   
 
- plan.addListener('click', function(event) {
-
-    var content = '' 
-
+  plan.addListener('click', function(event) {
+  
+  var content =  
+  '<h4>' + event.feature.getProperty("Utility") + '</h4>'
+  '<p>' + event.getProperty("Street") +  '</p>'
+  '<p>' + event.getProperty("Intersection1") + ' - ' +  event.getProperty("Intersection2") +   '</p>' +
+  '<strong>Name: </strong>' + event.feature.getProperty("Name") + 
+  '<strong>Description: </strong>' + event.feature.getProperty("Description") + 
+  '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") +  
+  '<strong>Start Date: </strong>' + event.feature.getProperty("StartDate") + 
+  '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") +
+  '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + 
+  '<strong>Type: </strong>' + event.feature.getProperty("Type") + 
+ '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut") 
+  
     infowindow.setContent(content)
 
     var anchor = new google.maps.MVCObject();
@@ -70,7 +81,7 @@ function showInfo(data, tabletop) {
             anchorPoint: new google.maps.Point(0, 0)
         });
 
-        infowindow.open(map, anchor);
+    infowindow.open(map, anchor);
   });
    
 
