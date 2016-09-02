@@ -62,8 +62,8 @@ function showInfo(data, tabletop) {
   
   var content =  
   '<h4>' + event.feature.getProperty("Utility") + '</h4>'
-  '<p>' + event.getProperty("Street") +  '</p>'
-  '<p>' + event.getProperty("Intersection1") + ' - ' +  event.getProperty("Intersection2") +   '</p>' +
+  '<p>' + event.feature.getProperty("Street") +  '</p>'
+  '<p>' + event.feature.getProperty("Intersection1") + ' - ' +  event.feature.getProperty("Intersection2") +   '</p>' +
   '<strong>Name: </strong>' + event.feature.getProperty("Name") + 
   '<strong>Description: </strong>' + event.feature.getProperty("Description") + 
   '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") +  
