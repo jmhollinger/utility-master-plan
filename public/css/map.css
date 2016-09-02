@@ -1,12 +1,3 @@
-html, body {
-height: 100%;
-font-family: Montserrat; Helvetica, san-serif;
-}
-
-.container-fluid{
-height: 100%;
-}
-
 #map-canvas{
     width: 100%;
     height: 100vh;
