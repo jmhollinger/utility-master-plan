@@ -61,8 +61,8 @@ function showInfo(data, tabletop) {
   plan.addListener('click', function(event) {
   
   var content =  
-  '<h4>' + event.feature.getProperty("Utility") + '</h4>'
-  '<p>' + event.feature.getProperty("Street") +  '</p>'
+  '<h4>' + event.feature.getProperty("Utility") + '</h4>' +
+  '<p>' + event.feature.getProperty("Street") +  '</p>' +
   '<p>' + event.feature.getProperty("Intersection1") + ' - ' +  event.feature.getProperty("Intersection2") +   '</p>' +
   '<strong>Name: </strong>' + event.feature.getProperty("Name") + 
   '<strong>Description: </strong>' + event.feature.getProperty("Description") + 
