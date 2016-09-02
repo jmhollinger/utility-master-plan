@@ -64,13 +64,13 @@ function showInfo(data, tabletop) {
   '<h4>' + event.feature.getProperty("Utility") + '</h4>' +
   '<p>' + event.feature.getProperty("Street") +  '</p>' +
   '<p>' + event.feature.getProperty("Intersection1") + ' - ' +  event.feature.getProperty("Intersection2") +   '</p>' +
-  '<strong>Name: </strong>' + event.feature.getProperty("Name") + 
-  '<strong>Description: </strong>' + event.feature.getProperty("Description") + 
+  '<strong>Name: </strong>' + event.feature.getProperty("Name") + '<br/>' + 
+  '<strong>Description: </strong>' + event.feature.getProperty("Description") + '<br/>' + 
   '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") +  
-  '<strong>Start Date: </strong>' + event.feature.getProperty("StartDate") + 
-  '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") +
-  '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + 
-  '<strong>Type: </strong>' + event.feature.getProperty("Type") + 
+  '<strong>Start Date: </strong>' + event.feature.getProperty("StartDate") + '<br/>' + 
+  '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") + '<br/>' + 
+  '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + '<br/>' + 
+  '<strong>Type: </strong>' + event.feature.getProperty("Type") + '<br/>' + 
  '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut") 
   
     infowindow.setContent(content)
