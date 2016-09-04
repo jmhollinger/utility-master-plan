@@ -61,6 +61,7 @@ function showInfo(data, tabletop) {
   plan.setStyle(function(feature){
   if (feature.getProperty('StreetCut') === 'Yes'){
   	return red
+  }
   else {
   	return blue}
   }	
