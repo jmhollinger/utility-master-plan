@@ -64,8 +64,6 @@ function showInfo(data, tabletop) {
   }
   else {
   	return blue}
-  }	
-
   });
 
   plan.setMap(map)
