@@ -24,6 +24,13 @@ var infowindow = new google.maps.InfoWindow();
     fillOpacity: '0.5'
     };
 
+  var red = {
+    strokeColor: '#e74c3c',
+    strokeWeight: 2,
+    fillColor: '#e74c3c',
+    fillOpacity: '0.5'
+    };
+
   var plan = new google.maps.Data()
 
 //Get Master Plan Data
@@ -51,18 +58,22 @@ function showInfo(data, tabletop) {
 
  }  
   
-  plan.setStyle(function(feature){});
+  plan.setStyle(function(feature){
+  if (feature.getProperty('StreetCut') === 'Yes'){
+  	return red
+  else {
+  	return blue}
+  }	
 
-  plan.setStyle(blue);
+  });
 
   plan.setMap(map)
   
-
   plan.addListener('click', function(event) {
   
   var content =  
   '<h4>' + event.feature.getProperty("Utility") + '</h4>' +
-  '<p>' + event.feature.getProperty("Street") +  '(' + event.feature.getProperty("Intersection1") + ' - ' +  event.feature.getProperty("Intersection2") +   ')</p>' +
+  '<p>' + event.feature.getProperty("Street") +  ' (' + event.feature.getProperty("Intersection1") + ' - ' +  event.feature.getProperty("Intersection2") +   ')</p>' +
   '<strong>Name: </strong>' + event.feature.getProperty("Name") + '<br/>' + 
   '<strong>Description: </strong>' + event.feature.getProperty("Description") + '<br/>' + 
   '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") +  '<br/>' +
