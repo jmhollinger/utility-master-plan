@@ -19,14 +19,14 @@ var infowindow = new google.maps.InfoWindow();
 
   var blue = {
     strokeColor: '#2980b9',
-    strokeWeight: 2,
+    strokeWeight: 6,
     fillColor: '#2980b9',
     fillOpacity: '0.5'
     };
 
   var red = {
     strokeColor: '#e74c3c',
-    strokeWeight: 2,
+    strokeWeight: 6,
     fillColor: '#e74c3c',
     fillOpacity: '0.5'
     };
