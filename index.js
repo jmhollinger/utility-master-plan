@@ -158,7 +158,42 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+
 app.post('/submit', function (req, res) {
+
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+            client.query({
+                    text: 'INSERT INTO masterplanprojects (utility,email,phone,name,description,impacts,startdate,enddate,type,streetcut,daysinrow,street,intersection1,intersection2,feature) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)',
+                    values: [
+                      req.body.utility,
+                      req.body.contact,
+                      req.body.email,
+                      req.body.phone,
+                      req.body.name,
+                      req.body.desc,
+                      req.body.impacts,
+                      req.body.start,
+                      req.body.end,
+                      req.body.type,
+                      Req.body.streetcut,
+                      req.body.daysinrow,
+                      req.body.street,
+                      req.body.crossstreet1,
+                      req.body.crossstreet2,
+                      '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
+                    ]
+                },function(err, result) {
+                    done();
+                    if (err) {
+                        res.json({"success": false,"results": err});
+                    } else {
+                        res.json({"success" : true, "results" : result.rows});
+                    }
+                });
+    });
+})
+
+app.post('/submit-deprecated', function (req, res) {
 
 function format_date(date){
 var arr = date.split("/")
