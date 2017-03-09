@@ -25,6 +25,10 @@ app.use(stormpath.init(app, {
   }
 }));
 
+app.get('/map', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+  res.render('map');
+});
+
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
