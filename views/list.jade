@@ -49,12 +49,9 @@ html(lang='en')
                 th='Street Cut'
                 th='Street'
               tbody
-               tr each row in data
-                 td= row.name
-                 td='data'
-                 td='data'
-                 td='data'
-                 td='data'
+                for item in data
+                  tr
+                    td= item.utility
     // Placed at the end of the document so the pages load faster
     script(src='js/tabletop.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
