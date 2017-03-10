@@ -51,7 +51,12 @@ html(lang='en')
               tbody
                 for item in data
                   tr
+                    td= item.datecreated
                     td= item.utility
+                    td= item.name
+                    td= item.description
+                    td= item.streetcut
+                    td= item.street
     // Placed at the end of the document so the pages load faster
     script(src='js/tabletop.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
