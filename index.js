@@ -163,7 +163,7 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 app.post('/submit', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query({
-                    text: 'INSERT INTO masterplanprojects (utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)',
+                    text: 'INSERT INTO masterplanprojects (utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)',
                     values: [
                       req.body.utility,
                       req.body.contact,
@@ -179,15 +179,15 @@ app.post('/submit', function (req, res) {
                       req.body.daysinrow,
                       req.body.street,
                       req.body.crossstreet1,
-                      req.body.crossstreet2
+                      req.body.crossstreet2,
+                      req.body.coordinates
                     ]
                 },function(err, result) {
                     done();
                     if (err) {
-                        res.json({"success": false,"results": err});
+                        res.render('error')  
                     } else {
-                        res.json({"success" : true, "results" : result.rows});
-                    }
+                        res.render('success')           }
                 });
     });
 })
