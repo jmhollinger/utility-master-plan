@@ -163,7 +163,8 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 app.post('/submit', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             client.query({
-                    text: 'INSERT INTO masterplanprojects (utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)',
+                    text: 'INSERT INTO masterplanprojects (utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) returning' +
+                    ' utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature',
                     values: [
                       req.body.utility,
                       req.body.contact,
@@ -187,7 +188,28 @@ app.post('/submit', function (req, res) {
                     if (err) {
                         res.render('error')  
                     } else {
-                        res.render('success')           }
+                        res.render('success',
+                          {
+                      "OriginURL" : req.headers.referer,
+                      "Utility" : result.rows[0].utility,
+                      "Contact" : result.rows[0].contact,
+                      "Email" : result.rows[0].email,
+                      "Phone" : result.rows[0].phone,
+                      "Name" : result.rows[0].name,
+                      "Description" : result.rows[0].description,
+                      "Impacts" : result.rows[0].impacts,
+                      "StartDate" : result.rows[0].startdate,
+                      "EndDate" : result.rows[0].enddate,
+                      "Type" : result.rows[0].type,
+                      "StreetCut" : result.rows[0].streetcut,
+                      "DaysinROW" : result.rows[0].daysinrow,
+                      "Street" : result.rows[0].street,
+                      "Intersection1" : result.rows[0].intersection1,
+                      "Intersection2" : result.rows[0].intersection2,
+                      "Feature" : result.rows[0].feature
+          }
+
+                          )           }
                 });
     });
 })
