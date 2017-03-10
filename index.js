@@ -159,6 +159,23 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+            done();
+            if (err) {
+                res.render('error');
+            } else {
+                res.render('list', 
+                  {
+                    "data": result.rows });           
+            }
+        });
+    });
+
+  
+});
+
 
 app.post('/submit', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
