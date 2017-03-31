@@ -259,7 +259,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
               var features = []
               var data = result.rows
 
-              for (var i = data.length - 1; i >= 0; i--) {
+              /*for (var i = data.length - 1; i >= 0; i--) {
                   var row = {
                                     {
                                     "type": "Feature",
@@ -284,15 +284,14 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                                     "geometry": data[i].feature                                  }
 
                   }
-
                   features.push(row)
-              }
+              }*/
 
                 res.json(
                   {
                   "type": "FeatureCollection",
                   "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                  "features": features
+                  "features": data
                   }
 
                   );           
