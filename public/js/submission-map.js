@@ -41,116 +41,114 @@ function initialize() {
 
     plan.loadGeoJson('http://lfucg-master-plan.herokuapp.com/api/projects')
 
-}
-
-plan.setStyle(function(feature) {
-    if (feature.getProperty('StreetCut') === 'Yes') {
-        return red
-    } else {
-        return blue
-    }
-});
-
-plan.setMap(map)
-
-plan.addListener('click', function(event) {
-
-    var content =
-        '<h4>' + event.feature.getProperty("Utility") + '</h4>' +
-        '<p>' + event.feature.getProperty("Street") + ' (' + event.feature.getProperty("Intersection1") + ' - ' + event.feature.getProperty("Intersection2") + ')</p>' +
-        '<strong>Name: </strong>' + event.feature.getProperty("Name") + '<br/>' +
-        '<strong>Description: </strong>' + event.feature.getProperty("Description") + '<br/>' +
-        '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") + '<br/>' +
-        '<strong>Start Date: </strong>' + event.feature.getProperty("StartDate") + '<br/>' +
-        '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") + '<br/>' +
-        '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + '<br/>' +
-        '<strong>Type: </strong>' + event.feature.getProperty("Type") + '<br/>' +
-        '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut")
-
-    infowindow.setContent(content)
-
-    var anchor = new google.maps.MVCObject();
-    anchor.setValues({ //position of the point
-        position: event.latLng,
-        anchorPoint: new google.maps.Point(0, 0)
+    plan.setStyle(function(feature) {
+        if (feature.getProperty('StreetCut') === 'Yes') {
+            return red
+        } else {
+            return blue
+        }
     });
 
-    infowindow.open(map, anchor);
-});
+    plan.setMap(map)
 
+    plan.addListener('click', function(event) {
 
-var defaultBounds = new google.maps.LatLngBounds(
-    new google.maps.LatLng(37.921971, -84.663139),
-    new google.maps.LatLng(38.155595, -84.334923)
-);
+        var content =
+            '<h4>' + event.feature.getProperty("Utility") + '</h4>' +
+            '<p>' + event.feature.getProperty("Street") + ' (' + event.feature.getProperty("Intersection1") + ' - ' + event.feature.getProperty("Intersection2") + ')</p>' +
+            '<strong>Name: </strong>' + event.feature.getProperty("Name") + '<br/>' +
+            '<strong>Description: </strong>' + event.feature.getProperty("Description") + '<br/>' +
+            '<strong>Impacts: </strong>' + event.feature.getProperty("Impacts") + '<br/>' +
+            '<strong>Start Date: </strong>' + event.feature.getProperty("StartDate") + '<br/>' +
+            '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") + '<br/>' +
+            '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + '<br/>' +
+            '<strong>Type: </strong>' + event.feature.getProperty("Type") + '<br/>' +
+            '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut")
 
-map.fitBounds(defaultBounds);
+        infowindow.setContent(content)
 
-// Create the search box and link it to the UI element.
-var input = /** @type {HTMLInputElement} */ (
-    document.getElementById('pac-input'));
-
-var searchBox = new google.maps.places.SearchBox(
-    /** @type {HTMLInputElement} */
-    (input));
-
-// [START region_getplaces]
-// Listen for the event fired when the user selects an item from the
-// pick list. Retrieve the matching places for that item.
-google.maps.event.addListener(searchBox, 'places_changed', function() {
-    var places = searchBox.getPlaces();
-
-    if (places.length == 0) {
-        return;
-    }
-    for (var i = 0, marker; marker = markers[i]; i++) {
-        marker.setMap(null);
-    }
-
-    // For each place, get the icon, place name, and location.
-    markers = [];
-    var bounds = new google.maps.LatLngBounds();
-    for (var i = 0, place; place = places[i]; i++) {
-        var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
-        };
-
-        // Create a marker for each place.
-         marker = new google.maps.Marker({
-            map: map,
-            icon: image,
-            title: place.name,
-            position: place.geometry.location
+        var anchor = new google.maps.MVCObject();
+        anchor.setValues({ //position of the point
+            position: event.latLng,
+            anchorPoint: new google.maps.Point(0, 0)
         });
 
-        markers.push(marker);
-
-        bounds.extend(place.geometry.location);
-    }
-
-    map.fitBounds(bounds);
-    map.setZoom(15);
-});
-// [END region_getplaces]
+        infowindow.open(map, anchor);
+    });
 
 
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(37.921971, -84.663139),
+        new google.maps.LatLng(38.155595, -84.334923)
+    );
 
-// Bias the SearchBox results towards places that are within the bounds of the
-// current map's viewport.
-google.maps.event.addListener(map, 'bounds_changed', function() {
-    var bounds = map.getBounds();
-    searchBox.setBounds(bounds);
-});
+    map.fitBounds(defaultBounds);
 
-google.maps.event.addDomListener(window, 'load', initialize);
+    // Create the search box and link it to the UI element.
+    var input = /** @type {HTMLInputElement} */ (
+        document.getElementById('pac-input'));
 
-function dateFormat(input) {
-    if (input) {
-        var parts = input.split('/');
-        return parts[1] + '/' + parts[2] + '/' + parts[0];
-    } else {}
+    var searchBox = new google.maps.places.SearchBox(
+        /** @type {HTMLInputElement} */
+        (input));
+
+    // [START region_getplaces]
+    // Listen for the event fired when the user selects an item from the
+    // pick list. Retrieve the matching places for that item.
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+            return;
+        }
+        for (var i = 0, marker; marker = markers[i]; i++) {
+            marker.setMap(null);
+        }
+
+        // For each place, get the icon, place name, and location.
+        markers = [];
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0, place; place = places[i]; i++) {
+            var image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            marker = new google.maps.Marker({
+                map: map,
+                icon: image,
+                title: place.name,
+                position: place.geometry.location
+            });
+
+            markers.push(marker);
+
+            bounds.extend(place.geometry.location);
+        }
+
+        map.fitBounds(bounds);
+        map.setZoom(15);
+    });
+    // [END region_getplaces]
+
+
+
+    // Bias the SearchBox results towards places that are within the bounds of the
+    // current map's viewport.
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+        var bounds = map.getBounds();
+        searchBox.setBounds(bounds);
+    });
 }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function dateFormat(input) {
+        if (input) {
+            var parts = input.split('/');
+            return parts[1] + '/' + parts[2] + '/' + parts[0];
+        } else {}
+    }
