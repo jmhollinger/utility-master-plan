@@ -176,6 +176,23 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
   
 });
 
+app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+            done();
+            if (err) {
+                res.render('error');
+            } else {
+                res.render('list', 
+                  {
+                    "data": result.rows });           
+            }
+        });
+    });
+
+  
+});
+
 
 app.post('/submit', function (req, res) {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -231,89 +248,25 @@ app.post('/submit', function (req, res) {
     });
 })
 
-app.post('/submit-deprecated', function (req, res) {
-
-function format_date(date){
-var arr = date.split("/")
-return arr[2] + '-' + arr[0] + '-' + arr[1] 
-}
-
-var spreadsheetkey = '1zmrxXEmIHvRRyIAlKCOP7pJVKsFXQRlIWIO0SR3m7D4'  
-
-var properties = {
-        "Utility" : req.body.utility,
-        "Contact" : req.body.contact,
-        "Email" : req.body.email,
-        "Phone" : req.body.phone,
-        "Name" : req.body.name,
-        "Description" : req.body.desc,
-        "Impacts" : req.body.impacts,
-        "StartDate" : req.body.start,
-        "EndDate" : req.body.end,
-        "Type" : req.body.type,
-        "StreetCut" : req.body.streetcut,
-        "DaysinROW" : req.body.daysinrow,
-        "Street" : req.body.street,
-        "Intersection1" : req.body.crossstreet1,
-        "Intersection2" : req.body.crossstreet2
-      }
-
-var feature = '{"type": "Feature", "properties":' + JSON.stringify(properties) + ', "geometry": ' + req.body.coordinates + '}'
-
-var data_google = {
-  "entry.372192304" : req.body.utility,
-  "entry.1854949369" : req.body.contact,
-  "entry.200295644" : req.body.email,
-  "entry.964881409" : req.body.phone,
-  "entry.1791471663" : req.body.name,
-  "entry.959945629" : req.body.desc,
-  "entry.640114638" : req.body.impacts,
-  "entry.2073523555" : format_date(req.body.start),
-  "entry.1949851848" : format_date(req.body.end),
-  "entry.1836361517" : req.body.type,
-  "entry.1678818035" : req.body.streetcut,
-  "entry.1974169754" : req.body.daysinrow,
-  "entry.995078440" : req.body.street,
-  "entry.215094489" : req.body.crossstreet1,
-  "entry.493746314" : req.body.crossstreet2,
-  "entry.2073488365" : feature
-}
-
-request.post('https://docs.google.com/forms/d/'+ spreadsheetkey +'/formResponse', {form:data_google}, function(err,httpResponse,body){
-  if (httpResponse.statusCode === 200 && body.match("Your response has been recorded.")) {
-    res.render('success',
-      {
-        "OriginURL" : req.headers.referer,
-        "Utility" : req.body.utility,
-        "Contact" : req.body.contact,
-        "Email" : req.body.email,
-        "Phone" : req.body.phone,
-        "Name" : req.body.name,
-        "Description" : req.body.desc,
-        "Impacts" : req.body.impacts,
-        "StartDate" : req.body.start,
-        "EndDate" : req.body.end,
-        "Type" : req.body.type,
-        "StreetCut" : req.body.streetcut,
-        "DaysinROW" : req.body.daysinrow,
-        "Street" : req.body.street,
-        "Intersection1" : req.body.crossstreet1,
-        "Intersection2" : req.body.crossstreet2,
-        "GoogleResponse" : httpResponse.statusCode,
-        "Feature" : feature
-          }
-      );
-  }
-  else {
-    res.render('error',
-      {
-        "OriginURL" : req.headers.referer,
-        "GoogleResponse" : httpResponse.statusCode
-          }
-      );
-  }
-})
+app.get('/api/v1/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+            done();
+            if (err) {
+                res.json(
+                  {"Response": "error"}
+                  );
+                }
+            } else {
+                res.json( 
+                  {
+                    "Response": result.rows }
+                  );           
+            }
+        });
+    });
 });
+
 
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
