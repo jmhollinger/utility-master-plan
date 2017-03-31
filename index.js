@@ -269,7 +269,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                        "Name" : data[i].name,
                        "Description" : data[i].description,
                        "Impacts" : data[i].impacts,
-                       "StartDate" : dateFormat(data[i].startdate,"m/d/yyy"),
+                       "StartDate" : data[i].startdate,
                        "EndDate" : data[i].enddate,
                        "Type" : data[i].type,
                        "StreetCut" : data[i].streetcut,
