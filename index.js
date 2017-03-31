@@ -225,22 +225,22 @@ app.post('/submit', function (req, res) {
                         res.render('success',
                           {
                       "OriginURL" : req.headers.referer,
-                      "Utility" : data.utility,
-                      "Contact" : data.contact,
-                      "Email" : data.email,
-                      "Phone" : data.phone,
-                      "Name" : data.name,
-                      "Description" : data.description,
-                      "Impacts" : data.impacts,
-                      "StartDate" : data.startdate,
-                      "EndDate" : data.enddate,
-                      "Type" : data.type,
-                      "StreetCut" : data.streetcut,
-                      "DaysinROW" : data.daysinrow,
-                      "Street" : data.street,
-                      "Intersection1" : data.intersection1,
-                      "Intersection2" : data.intersection2,
-                      "Feature" : data.feature
+                      "Utility" : result.rows[0].utility,
+                      "Contact" : result.rows[0].contact,
+                      "Email" : result.rows[0].email,
+                      "Phone" : result.rows[0].phone,
+                      "Name" : result.rows[0].name,
+                      "Description" : result.rows[0].description,
+                      "Impacts" : result.rows[0].impacts,
+                      "StartDate" : result.rows[0].startdate,
+                      "EndDate" : result.rows[0].enddate,
+                      "Type" : result.rows[0].type,
+                      "StreetCut" : result.rows[0].streetcut,
+                      "DaysinROW" : result.rows[0].daysinrow,
+                      "Street" : result.rows[0].street,
+                      "Intersection1" : result.rows[0].intersection1,
+                      "Intersection2" : result.rows[0].intersection2,
+                      "Feature" : result.rows[0].feature
           }
 
                           )           }
