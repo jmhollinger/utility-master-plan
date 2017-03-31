@@ -259,33 +259,9 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
               var features = []
               var data = result.rows
 
-              /*for (var i = data.length - 1; i >= 0; i--) {
-                  var row = {
-                                    {
-                                    "type": "Feature",
-                                    "properties": {
-                                        "Utility" : data[i].utility,
-                                        "Contact" : data[i].contact,
-                                        "Email" : data[i].email,
-                                        "Phone" : data[i].phone,
-                                        "Name" : data[i].name,
-                                        "Description" : data[i].description,
-                                        "Impacts" : data[i].impacts,
-                                        "StartDate" : data[i].startdate,
-                                        "EndDate" : data[i].enddate,
-                                        "Type" : data[i].type,
-                                        "StreetCut" : data[i].streetcut,
-                                        "DaysinROW" : data[i].daysinrow,
-                                        "Street" : data[i].street,
-                                        "Intersection1" : data[i].intersection1,
-                                        "Intersection2" : data[i].intersection2,
-                                        "Feature" : data[i].feature
-                                    },
-                                    "geometry": data[i].feature                                  }
-
-                  }
-                  features.push(row)
-              }*/
+              for (var i = data.length - 1; i >= 0; i--) {
+                   console.log(data[i].name)
+                }   
 
                 res.json(
                   {
