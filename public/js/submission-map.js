@@ -33,28 +33,8 @@ var infowindow = new google.maps.InfoWindow();
 
   var plan = new google.maps.Data()
 
-//Get Master Plan Data
-var public_spreadsheet_url = "1EAVolIEUmF9-1pIbybOs9-LLiagiaa3yTRUeSLb_dck"
 
-var tabletop = Tabletop.init( { 
-  key: public_spreadsheet_url,          
-  simpleSheet: true,
-  callback: showInfo } )
-
-function showInfo(data, tabletop) {
-  var features = []
-  for (var i = data.length - 1; i >= 0; i--) {
-    var feature = JSON.parse(data[i].Feature)
-    features.push(feature)
-}
- 
-  var obj = {
-  "type": "FeatureCollection",
-  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-  "features": features
-  }
-
-  plan.addGeoJson(obj)
+  plan.loadGeoJson('http://lfucg-master-plan.herokuapp.com/api/projects')
 
  }  
   
