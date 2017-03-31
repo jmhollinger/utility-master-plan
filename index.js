@@ -225,22 +225,22 @@ app.post('/submit', function (req, res) {
                         res.render('success',
                           {
                       "OriginURL" : req.headers.referer,
-                      "Utility" : result.rows[0].utility,
-                      "Contact" : result.rows[0].contact,
-                      "Email" : result.rows[0].email,
-                      "Phone" : result.rows[0].phone,
-                      "Name" : result.rows[0].name,
-                      "Description" : result.rows[0].description,
-                      "Impacts" : result.rows[0].impacts,
-                      "StartDate" : result.rows[0].startdate,
-                      "EndDate" : result.rows[0].enddate,
-                      "Type" : result.rows[0].type,
-                      "StreetCut" : result.rows[0].streetcut,
-                      "DaysinROW" : result.rows[0].daysinrow,
-                      "Street" : result.rows[0].street,
-                      "Intersection1" : result.rows[0].intersection1,
-                      "Intersection2" : result.rows[0].intersection2,
-                      "Feature" : result.rows[0].feature
+                      "Utility" : data.utility,
+                      "Contact" : data.contact,
+                      "Email" : data.email,
+                      "Phone" : data.phone,
+                      "Name" : data.name,
+                      "Description" : data.description,
+                      "Impacts" : data.impacts,
+                      "StartDate" : data.startdate,
+                      "EndDate" : data.enddate,
+                      "Type" : data.type,
+                      "StreetCut" : data.streetcut,
+                      "DaysinROW" : data.daysinrow,
+                      "Street" : data.street,
+                      "Intersection1" : data.intersection1,
+                      "Intersection2" : data.intersection2,
+                      "Feature" : data.feature
           }
 
                           )           }
@@ -255,7 +255,47 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
             if (err) {
                 res.json({"success": false, "results": "error"});
             } else {
-                res.json({"success": true, "results": result.rows});           
+
+              var features = []
+              var data = result.rows
+
+              for (var i = data.length - 1; i >= 0; i--) {
+                  var row = {
+                                    {
+                                    "type": "Feature",
+                                    "properties": {
+                                        "Utility" : data[i].utility,
+                                        "Contact" : data[i].contact,
+                                        "Email" : data[i].email,
+                                        "Phone" : data[i].phone,
+                                        "Name" : data[i].name,
+                                        "Description" : data[i].description,
+                                        "Impacts" : data[i].impacts,
+                                        "StartDate" : data[i].startdate,
+                                        "EndDate" : data[i].enddate,
+                                        "Type" : data[i].type,
+                                        "StreetCut" : data[i].streetcut,
+                                        "DaysinROW" : data[i].daysinrow,
+                                        "Street" : data[i].street,
+                                        "Intersection1" : data[i].intersection1,
+                                        "Intersection2" : data[i].intersection2,
+                                        "Feature" : data[i].feature
+                                    },
+                                    "geometry": data[i].feature                                  }
+
+                  }
+
+                  features.push(row)
+              }
+
+                res.json(
+                  {
+                  "type": "FeatureCollection",
+                  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                  "features": features
+                  }
+
+                  );           
             }
         });
     }); 
