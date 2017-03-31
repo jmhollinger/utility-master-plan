@@ -261,23 +261,26 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
 
               for (var i = data.length - 1; i >= 0; i--) {
 
-                   var properties = {
-                   "DateCreated" : data[i].datecreated,
-                   "Name" : data[i].name,
-                   "Description" : data[i].description,
-                   "Impacts" : data[i].impacts,
-                   "StartDate" : data[i].startdate,
-                   "EndDate" : data[i].enddate,
-                   "Type" : data[i].type,
-                   "StreetCut" : data[i].streetcut,
-                   "DaysinROW" : data[i].daysinrow,
-                   "Street" : data[i].street,
-                   "Intersection1" : data[i].intersection1,
-                   "Intersection2" : data[i].intersection2
-                   }
+                  var row = {
+                      "type": "Feature",
+                      "properties": {
+                       "DateCreated" : data[i].datecreated,
+                       "Name" : data[i].name,
+                       "Description" : data[i].description,
+                       "Impacts" : data[i].impacts,
+                       "StartDate" : data[i].startdate,
+                       "EndDate" : data[i].enddate,
+                       "Type" : data[i].type,
+                       "StreetCut" : data[i].streetcut,
+                       "DaysinROW" : data[i].daysinrow,
+                       "Street" : data[i].street,
+                       "Intersection1" : data[i].intersection1,
+                       "Intersection2" : data[i].intersection2
+                      },
+                      "geometry": data[i].feature
+                    }
 
-                   console.log(properties)
-                   console.log(data[i].feature)
+                    console.log(row)
                 }   
 
                 res.json(
