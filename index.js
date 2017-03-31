@@ -248,6 +248,20 @@ app.post('/submit', function (req, res) {
     });
 })
 
+app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+            done();
+            if (err) {
+                res.json({"success": false, "results": "error"});
+            } else {
+                res.json({"success": true, "results": result.rows});           
+            }
+        });
+    }); 
+});
+
+
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || 3000);
 });
