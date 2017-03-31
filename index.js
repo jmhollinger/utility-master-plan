@@ -264,6 +264,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                   var row = {
                       "type": "Feature",
                       "properties": {
+                       "Utility" : data[i].utility,
                        "DateCreated" : data[i].datecreated,
                        "Name" : data[i].name,
                        "Description" : data[i].description,
