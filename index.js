@@ -280,14 +280,14 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                       "geometry": data[i].feature
                     }
 
-                    console.log(row)
+                    features.push(row)
                 }   
 
                 res.json(
                   {
                   "type": "FeatureCollection",
                   "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                  "features": data
+                  "features": features
                   }
 
                   );           
