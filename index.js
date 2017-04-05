@@ -3,10 +3,11 @@ var pg = require('pg');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var request = require('request');
-var json2csv = require('json2csv');
-var csv = require('express-csv')
+var json2csv = require('express-json2csv');
 
 var app = express()
+
+app.use(json2csv)
 
 app.use(express.static('public'));
 
@@ -252,15 +253,25 @@ app.post('/submit', function (req, res) {
 
 app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+        client.query('SELECT projectid, utility, name FROM masterplanprojects', function(err, result) {
             done();
-
-            var csv = json2csv({ data: result.rows});
  
             if (err) {
                 res.render('error');
             } else {
-                res.download(csv);           
+
+              var columns = [{
+                                prop: 'projectid',
+                                label: 'ID'
+                              }, {
+                                prop: 'utility',
+                                label: 'Age'
+                              }, {
+                                prop: 'name',
+                                label: 'Name'
+                              }]
+
+              res.csv('masterplan-projects', result.rows, columns);           
             }
         });
     });
