@@ -253,7 +253,7 @@ app.post('/submit', function (req, res) {
 
 app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT projectid, utility, name FROM masterplanprojects', function(err, result) {
+        client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects', function(err, result) {
             done();
  
             if (err) {
@@ -263,13 +263,71 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
               var columns = [{
                                 prop: 'projectid',
                                 label: 'ID'
-                              }, {
+                              },
                                 prop: 'utility',
-                                label: 'Age'
+                                label: 'Utility'
                               }, {
+                                prop: 'contact',
+                                label: 'Contact'
+                              },
+                              {
+                                prop: 'email',
+                                label: 'Email'
+                              }, 
+                              {
+                                prop: 'phone',
+                                label: 'Phone'
+                              },
+                              {
                                 prop: 'name',
                                 label: 'Name'
-                              }]
+                              }, 
+                              {
+                                prop: 'description',
+                                label: 'Description'
+                              },
+                              {
+                                prop: 'impacts',
+                                label: 'Impacts'
+                              }, {
+                                prop: 'startdate',
+                                label: 'Start Date'
+                              },
+                              {
+                                prop: 'enddate',
+                                label: 'End Date'
+                              },
+
+                              type, streetcut, daysinrow, street, intersection1, intersection2, 
+                              {
+                                prop: 'type',
+                                label: 'Type'
+                              },
+                              {
+                                prop: 'streetcut',
+                                label: 'Street Cut?'
+                              },
+                              {
+                                prop: 'daysinrow',
+                                label: 'Days in ROW'
+                              },
+                              {
+                                prop: 'street',
+                                label: 'Street'
+                              },
+                              {
+                                prop: 'intersection1',
+                                label: 'Intersection Start'
+                              },
+                              {
+                                prop: 'intersection2',
+                                label: 'Intersection End'
+                              },
+                              {
+                                prop: 'feature',
+                                label: 'Geo'
+                              }
+                              ]
 
               res.csv('masterplan-projects', result.rows, columns);           
             }
