@@ -3,6 +3,7 @@ var pg = require('pg');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var request = require('request');
+var json2csv = require('json2csv');
 
 var app = express()
 
@@ -247,6 +248,24 @@ app.post('/submit', function (req, res) {
                 });
     });
 })
+
+app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+            done();
+
+            var csv = json2csv({ data: result.rows});
+ 
+            if (err) {
+                res.render('error');
+            } else {
+                res.send(csv);           
+            }
+        });
+    });
+
+  
+});
 
 app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
