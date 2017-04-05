@@ -260,7 +260,7 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                 res.render('error');
             } else {
 
-               /*var columns = [{
+               var columns = [{
                                 prop: 'projectid',
                                 label: 'ID'
                               },
@@ -322,15 +322,10 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                               {
                                 prop: 'intersection2',
                                 label: 'Intersection End'
-                              },
-                              {
-                                prop: 'feature',
-                                label: 'Geo'
                               }]
 
-              res.csv('masterplan-projects', result.rows, columns);*/
-
-              res.json(result.rows)         
+              res.csv('masterplan-projects', result.rows, columns);
+        
             }
         });
     });
