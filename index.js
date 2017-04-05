@@ -289,7 +289,8 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                               {
                                 prop: 'impacts',
                                 label: 'Impacts'
-                              }, {
+                              }, 
+                              {
                                 prop: 'startdate',
                                 label: 'Start Date'
                               },
@@ -297,8 +298,6 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                                 prop: 'enddate',
                                 label: 'End Date'
                               },
-
-                              type, streetcut, daysinrow, street, intersection1, intersection2, 
                               {
                                 prop: 'type',
                                 label: 'Type'
