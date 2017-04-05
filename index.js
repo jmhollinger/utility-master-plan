@@ -266,7 +266,8 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                               },
                                 prop: 'utility',
                                 label: 'Utility'
-                              }, {
+                              }, 
+                              {
                                 prop: 'contact',
                                 label: 'Contact'
                               },
@@ -325,8 +326,7 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                               {
                                 prop: 'feature',
                                 label: 'Geo'
-                              }
-                              ]
+                              }]
 
               res.csv('masterplan-projects', result.rows, columns);           
             }
