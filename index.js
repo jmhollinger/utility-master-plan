@@ -260,7 +260,7 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                 res.render('error');
             } else {
 
-              var columns = [{
+               /*var columns = [{
                                 prop: 'projectid',
                                 label: 'ID'
                               },
@@ -305,7 +305,7 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                               },
                               {
                                 prop: 'streetcut',
-                                label: 'Street Cut?'
+                                label: 'Street Cut'
                               },
                               {
                                 prop: 'daysinrow',
@@ -328,7 +328,9 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                                 label: 'Geo'
                               }]
 
-              res.csv('masterplan-projects', result.rows, columns);           
+              res.csv('masterplan-projects', result.rows, columns);*/
+
+              res.json(result.rows)         
             }
         });
     });
