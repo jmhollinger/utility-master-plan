@@ -264,7 +264,58 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
               {
                 prop : 'projectid',
                 label: 'ID'
+              },
+              {
+                prop: 'utility',
+                label: 'Utility'
+              },{
+                  prop: 'contact',
+                  label: 'Contact'
+              }, 
+              {
+                  prop: 'email',
+                  label: 'Email'
+              },
+              {
+                  prop: 'phone',
+                  label: 'Phone'
+              }, 
+              {
+                  prop: 'name',
+                  label: 'Name'
+              },
+              {
+                  prop: 'description',
+                  label: 'Description'
+              },{
+                  prop: 'impacts',
+                  label: 'Impacts'
+              },{
+                  prop: 'startdate',
+                  label: 'Start Date'
+              },{
+                  prop: 'enddate',
+                  label: 'End Date'
+              },{
+                  prop: 'type',
+                  label: 'Type'
+              }, {
+                  prop: 'streetcut',
+                  label: 'Street Cut'
+              }, {
+                  prop: 'daysinrow',
+                  label: 'Days in ROW'
+              }, {
+                  prop: 'street',
+                  label: 'Street'
+              }, {
+                  prop: 'intersection1',
+                  label: 'Intersection Start'
+              }, {
+                  prop: 'intersection2',
+                  label: 'Intersection End'
               }
+
               ]
 
               res.csv('masterplan-projects', result.rows, columns);
