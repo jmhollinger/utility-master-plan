@@ -266,9 +266,14 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
                 label: 'ID'
               },
               {
+                prop: 'datecreated',
+                label: 'Date Entered'
+              },
+              {
                 prop: 'utility',
                 label: 'Utility'
-              },{
+              },
+              {
                   prop: 'contact',
                   label: 'Contact'
               }, 
@@ -314,6 +319,10 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
               }, {
                   prop: 'intersection2',
                   label: 'Intersection End'
+              },
+                            {
+                prop: 'feature',
+                label: 'Geo'
               }
 
               ]
