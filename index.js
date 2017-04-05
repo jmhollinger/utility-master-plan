@@ -322,7 +322,10 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
               },
                             {
                 prop: 'feature',
-                label: 'Geo'
+                label: 'Geo',
+                render: function(data, row) {
+                  return JSON.stringify(data);
+                }
               }
 
               ]
