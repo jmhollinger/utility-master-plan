@@ -39,8 +39,9 @@ html(lang='en')
     .container
       .row
         .col-sm-12
-          a.btn.btn-default(href='/api/projectlist') Export CSV
-          a.btn.btn-default(href='/api/projects') Export GeoJSON
+          .btn-group
+            a.btn.btn-default(href='/api/projectlist') Export CSV
+            a.btn.btn-default(href='/api/projects') Export GeoJSON
           table.table
             thead
               tr

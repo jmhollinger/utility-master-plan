@@ -319,16 +319,8 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
               }, {
                   prop: 'intersection2',
                   label: 'Intersection End'
-              },
-                            {
-                prop: 'feature',
-                label: 'Geo',
-                render: function(data, row) {
-                  return JSON.stringify(data);
-                }
               }
-
-              ]
+              ]              ]
 
               res.csv('masterplan-projects', result.rows, columns);
         
