@@ -4,7 +4,7 @@ var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var request = require('request');
 var json2csv = require('json2csv');
-var csv = require('express-csv');
+var csv = require('express-csv')
 
 var app = express()
 
@@ -254,12 +254,14 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects', function(err, result) {
             done();
+
+            var csv = json2csv({ data: result.rows});
  
             if (err) {
                 res.render('error');
             } else {
-                  res.csv(result.rows);          
-                                  }
+                res.download(csv);           
+            }
         });
     });
 
