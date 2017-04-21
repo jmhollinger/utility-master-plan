@@ -182,14 +182,38 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
 
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+        client.query('SELECT * FROM masterplanprojects ORDER BY utility DESC', function(err, result) {
             done();
             if (err) {
                 res.render('error');
             } else {
+
+                var formatttedData = []
+                var data = result.rows
+
+                for (var i = data.length - 1; i >= 0; i--) {
+                  var item = {
+                       "Utility" : data[i].utility,
+                       "DateCreated" : moment(data[i].datecreated).format('M-D-YYYY'),
+                       "Name" : data[i].name,
+                       "Description" : data[i].description,
+                       "Impacts" : data[i].impacts,
+                       "StartDate" : moment(data[i].startdate).format('M-D-YYYY'),
+                       "EndDate" : moment(data[i].enddate).format('M-D-YYYY'),
+                       "Type" : data[i].type,
+                       "StreetCut" : data[i].streetcut,
+                       "DaysinROW" : data[i].daysinrow,
+                       "Street" : data[i].street,
+                       "Intersection1" : data[i].intersection1,
+                       "Intersection2" : data[i].intersection2data[i].
+                  }
+
+                  formatttedData.push(item)
+                }
+
                 res.render('list', 
                   {
-                    "data": result.rows });           
+                    "data": formattedData });           
             }
         });
     });
