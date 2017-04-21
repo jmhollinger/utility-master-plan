@@ -181,7 +181,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                        "description" : inputData[i].description,
                        "impacts" : inputData[i].impacts,
                        "startdate" : moment(inputData[i].startdate).format('M/D/YYYY'),
-                       "enddate" : moment(inputData[i].).format('M/D/YYYY'),
+                       "enddate" : moment(inputData[i].enddate).format('M/D/YYYY'),
                        "type" : inputData[i].type,
                        "streetcut" : inputData[i].streetcut,
                        "daysinrow" : inputData[i].daysinrow,
