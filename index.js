@@ -324,21 +324,21 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                   var row = {
                       "type": "Feature",
                       "properties": {
-                       "Utility" : geodata[i].utility,
-                       "DateCreated" : moment(geodata[i].datecreated).format('M-D-YYYY'),
-                       "Name" : geodata[i].name,
-                       "Description" : geodata[i].description,
-                       "Impacts" : geodata[i].impacts,
-                       "StartDate" : moment(geodata[i].startdate).format('M-D-YYYY'),
-                       "EndDate" : moment(geodata[i].enddate).format('M-D-YYYY'),
-                       "Type" : geodata[i].type,
-                       "StreetCut" : geodata[i].streetcut,
-                       "DaysinROW" : geodata[i].daysinrow,
-                       "Street" : geodata[i].street,
-                       "Intersection1" : geodata[i].intersection1,
-                       "Intersection2" : geodata[i].intersection2
+                       "Utility" : inputData[i].utility,
+                       "DateCreated" : moment(inputData[i].datecreated).format('M-D-YYYY'),
+                       "Name" : inputData[i].name,
+                       "Description" : inputData[i].description,
+                       "Impacts" : inputData[i].impacts,
+                       "StartDate" : moment(inputData[i].startdate).format('M-D-YYYY'),
+                       "EndDate" : moment(inputData[i].enddate).format('M-D-YYYY'),
+                       "Type" : inputData[i].type,
+                       "StreetCut" : inputData[i].streetcut,
+                       "DaysinROW" : inputData[i].daysinrow,
+                       "Street" : inputData[i].street,
+                       "Intersection1" : inputData[i].intersection1,
+                       "Intersection2" : inputData[i].intersection2
                       },
-                      "geometry": geodata[i].feature
+                      "geometry": inputData[i].feature
                     }
                     formattedData.push(row)
                 }
