@@ -214,7 +214,7 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
                 console.log(formattedData)
                 res.render('list', 
                   {
-                    "results": formattedData });           
+                    "data": formattedData });           
             }
         });
     });
