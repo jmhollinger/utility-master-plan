@@ -30,16 +30,16 @@ app.use(stormpath.init(app, {
   }
 }));
 
-app.get('/map', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-  res.render('map');
-});
-
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
     user_phone = data.phone
   })  
   res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
+});
+
+app.get('/map', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+  res.render('map');
 });
 
 app.get('/lightower', stormpath.groupsRequired(['Lightower', 'Admins'], false), function (req, res) {
@@ -164,46 +164,7 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 });
 
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-  res.send('list')
-      /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT * FROM masterplanprojects ORDER BY utility DESC', function(err, result) {
-            done();
-            if (err) {
-                res.render('error');
-            } else {
-
-                var formattedData = []
-                var data = result.rows
-
-                for (var i = data.length - 1; i >= 0; i--) {
-                  var item = {
-                       "Utility" : data[i].utility,
-                       "DateCreated" : moment(data[i].datecreated).format('M-D-YYYY'),
-                       "Name" : data[i].name,
-                       "Description" : data[i].description,
-                       "Impacts" : data[i].impacts,
-                       "StartDate" : moment(data[i].startdate).format('M-D-YYYY'),
-                       "EndDate" : moment(data[i].enddate).format('M-D-YYYY'),
-                       "Type" : data[i].type,
-                       "StreetCut" : data[i].streetcut,
-                       "DaysinROW" : data[i].daysinrow,
-                       "Street" : data[i].street,
-                       "Intersection1" : data[i].intersection1,
-                       "Intersection2" : data[i].intersection2
-                  }
-
-                  formattedData.push(item)
-                }
-
-                console.log(formattedData)
-                res.render('list', 
-                  {
-                    data: formattedData });           
-            }
-        });
-    });
-
-  */
+res.render('list')
 });
 
 
@@ -343,7 +304,8 @@ app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], fal
 });
 
 app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-res.send('map')
+
+res.json({"success": true, "results": "results"})
 
 /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects', function(err, result) {
