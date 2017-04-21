@@ -4,6 +4,7 @@ var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
 var request = require('request');
 var json2csv = require('express-json2csv');
+var moment = require('moment');
 
 var app = express()
 
@@ -348,12 +349,12 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                       "type": "Feature",
                       "properties": {
                        "Utility" : data[i].utility,
-                       "DateCreated" : data[i].datecreated,
+                       "DateCreated" : moment(data[i].datecreated).format('M-D-YYYY'),
                        "Name" : data[i].name,
                        "Description" : data[i].description,
                        "Impacts" : data[i].impacts,
-                       "StartDate" : data[i].startdate,
-                       "EndDate" : data[i].enddate,
+                       "StartDate" : moment(data[i].startdate).format('M-D-YYYY'),
+                       "EndDate" : moment(data[i].enddate).format('M-D-YYYY'),
                        "Type" : data[i].type,
                        "StreetCut" : data[i].streetcut,
                        "DaysinROW" : data[i].daysinrow,
