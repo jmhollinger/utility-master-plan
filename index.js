@@ -164,7 +164,8 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 });
 
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  res.send('list')
+      /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects ORDER BY utility DESC', function(err, result) {
             done();
             if (err) {
@@ -202,7 +203,7 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
         });
     });
 
-  
+  */
 });
 
 
@@ -261,7 +262,8 @@ app.post('/submit', function (req, res) {
 })
 
 app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  res.send('csv')
+    /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects', function(err, result) {
             done();
  
@@ -337,11 +339,13 @@ app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], fal
         });
     });
 
-  
+  */
 });
 
 app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+res.send('map')
+
+/*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects', function(err, result) {
             done();
             if (err) {
@@ -389,6 +393,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             }
         });
     });
+*/
 });
 
 
