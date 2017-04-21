@@ -164,7 +164,16 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 });
 
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-res.render('list',{data : 'test'})
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects ORDER BY utility;', function(err, result) {
+            done();
+            if (err) {
+                res.json({"success": false, "results": "error"});
+            } else {
+                res.render('list', {"success": true, "results": result.rows});
+            }
+        });
+    });
 });
 
 
