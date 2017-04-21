@@ -210,6 +210,8 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
 
                   formattedData.push(item)
                 }
+
+                console.log(formattedData)
                 res.render('list', 
                   {
                     data : formattedData });           
