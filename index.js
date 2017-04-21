@@ -277,7 +277,7 @@ app.post('/submit', function (req, res) {
     });
 })
 
-app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects', function(err, result) {
             done();
@@ -357,7 +357,7 @@ app.get('/api/projectlist', stormpath.groupsRequired(['Utilities', 'Admins'], fa
   
 });
 
-app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
       pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects', function(err, result) {
             done();
@@ -367,7 +367,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
 
                 res.json({"success": true, "results": "results"});
 
-              /*var features = []
+              var features = []
               var geodata = result.rows
 
               for (var i = data.length - 1; i >= 0; i--) {
@@ -402,7 +402,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                   "features": features
                   }
 
-                  );*/           
+                  );           
             }
         });
     }); 
