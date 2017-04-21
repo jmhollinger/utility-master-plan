@@ -366,28 +366,28 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
             } else {
 
               var features = []
-              var data = result.rows
+              var geodata = result.rows
 
               for (var i = data.length - 1; i >= 0; i--) {
 
                   var row = {
                       "type": "Feature",
                       "properties": {
-                       "Utility" : data[i].utility,
-                       "DateCreated" : moment(data[i].datecreated).format('M-D-YYYY'),
-                       "Name" : data[i].name,
-                       "Description" : data[i].description,
-                       "Impacts" : data[i].impacts,
-                       "StartDate" : moment(data[i].startdate).format('M-D-YYYY'),
-                       "EndDate" : moment(data[i].enddate).format('M-D-YYYY'),
-                       "Type" : data[i].type,
-                       "StreetCut" : data[i].streetcut,
-                       "DaysinROW" : data[i].daysinrow,
-                       "Street" : data[i].street,
-                       "Intersection1" : data[i].intersection1,
-                       "Intersection2" : data[i].intersection2
+                       "Utility" : geodata[i].utility,
+                       "DateCreated" : moment(geodata[i].datecreated).format('M-D-YYYY'),
+                       "Name" : geodata[i].name,
+                       "Description" : geodata[i].description,
+                       "Impacts" : geodata[i].impacts,
+                       "StartDate" : moment(geodata[i].startdate).format('M-D-YYYY'),
+                       "EndDate" : moment(geodata[i].enddate).format('M-D-YYYY'),
+                       "Type" : geodata[i].type,
+                       "StreetCut" : geodata[i].streetcut,
+                       "DaysinROW" : geodata[i].daysinrow,
+                       "Street" : geodata[i].street,
+                       "Intersection1" : geodata[i].intersection1,
+                       "Intersection2" : geodata[i].intersection2
                       },
-                      "geometry": data[i].feature
+                      "geometry": geodata[i].feature
                     }
 
                     features.push(row)
