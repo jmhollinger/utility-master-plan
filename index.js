@@ -358,7 +358,9 @@ app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], fal
 });
 
 app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-      pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+res.send('Working!')  
+
+      /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects', function(err, result) {
             done();
             if (err) {
@@ -405,7 +407,7 @@ app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], fal
                   );           
             }
         });
-    }); 
+    }); */
 });
 
 
