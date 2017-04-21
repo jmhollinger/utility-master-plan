@@ -188,7 +188,7 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
                 res.render('error');
             } else {
 
-                var formatttedData = []
+                var formattedData = []
                 var data = result.rows
 
                 for (var i = data.length - 1; i >= 0; i--) {
@@ -208,8 +208,9 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
                        "Intersection2" : data[i].intersection2
                   }
 
-                  formatttedData.push(item)
+                  formattedData.push(item)
                 }
+
 
                 res.render('list', 
                   {
