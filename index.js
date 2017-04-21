@@ -164,7 +164,7 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 });
 
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-res.render('list')
+res.render('list',{data : 'test'})
 });
 
 
