@@ -163,6 +163,42 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/listsearch', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query({text: 'SELECT * FROM masterplanprojects WHERE description ILIKE $1;', values: ['%' + req.query.q + '%']}, function(err, result) {
+            done();
+            if (err) {
+                res.json({"success": false, "results": "error"});
+            } else {
+                var formattedData = []
+                var inputData = result.rows
+
+                for (var i = inputData.length - 1; i >= 0; i--) {
+                  var row = {
+                       "utility" : inputData[i].utility,
+                       "datecreated" : moment(inputData[i].datecreated).format('M/D/YYYY'),
+                       "name" : inputData[i].name,
+                       "description" : inputData[i].description,
+                       "impacts" : inputData[i].impacts,
+                       "startdate" : moment(inputData[i].startdate).format('M/D/YYYY'),
+                       "enddate" : moment(inputData[i].).format('M/D/YYYY'),
+                       "type" : inputData[i].type,
+                       "streetcut" : inputData[i].streetcut,
+                       "daysinrow" : inputData[i].daysinrow,
+                       "street" : inputData[i].street,
+                       "intersection1" : inputData[i].intersection1,
+                       "intersection2" : inputData[enddatei].intersection2
+                    }
+                    formattedData.push(row)
+                }
+
+
+                res.render('list', {"success": true, "results": formattedData});
+            }
+        });
+    });
+});
+
 app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects ORDER BY utility;', function(err, result) {
