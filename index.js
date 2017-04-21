@@ -187,7 +187,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                        "daysinrow" : inputData[i].daysinrow,
                        "street" : inputData[i].street,
                        "intersection1" : inputData[i].intersection1,
-                       "intersection2" : inputData[enddatei].intersection2
+                       "intersection2" : inputData[i].intersection2
                     }
                     formattedData.push(row)
                 }
