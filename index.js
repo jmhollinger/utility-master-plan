@@ -170,7 +170,30 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             if (err) {
                 res.json({"success": false, "results": "error"});
             } else {
-                res.render('list', {"success": true, "results": result.rows});
+                var formattedData = []
+                var inputData = result.rows
+
+                for (var i = inputData.length - 1; i >= 0; i--) {
+                  var row = {
+                       "Utility" : inputData[i].utility,
+                       "datecreated" : moment(inputData[i].datecreated).format('M-D-YYYY'),
+                       "name" : inputData[i].name,
+                       "description" : inputData[i].description,
+                       "impacts" : inputData[i].impacts,
+                       "startdate" : moment(inputData[i].startdate).format('M-D-YYYY'),
+                       "enddate" : moment(inputData[i].enddate).format('M-D-YYYY'),
+                       "type" : inputData[i].type,
+                       "streetcut" : inputData[i].streetcut,
+                       "daysinrow" : inputData[i].daysinrow,
+                       "street" : inputData[i].street,
+                       "intersection1" : inputData[i].intersection1,
+                       "intersection2" : inputData[i].intersection2
+                    }
+                    formattedData.push(row)
+                }
+
+
+                res.render('list', {"success": true, "results": formattedData});
             }
         });
     });
