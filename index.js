@@ -205,7 +205,7 @@ app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), funct
                        "DaysinROW" : data[i].daysinrow,
                        "Street" : data[i].street,
                        "Intersection1" : data[i].intersection1,
-                       "Intersection2" : data[i].intersection2data[i].
+                       "Intersection2" : data[i].intersection2
                   }
 
                   formatttedData.push(item)
