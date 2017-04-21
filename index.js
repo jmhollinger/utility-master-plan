@@ -365,7 +365,9 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                 res.json({"success": false, "results": "error"});
             } else {
 
-              var features = []
+                res.json({"success": true, "results": "results"});
+
+              /*var features = []
               var geodata = result.rows
 
               for (var i = data.length - 1; i >= 0; i--) {
@@ -400,7 +402,7 @@ app.get('/api/projects', stormpath.groupsRequired(['Utilities', 'Admins'], false
                   "features": features
                   }
 
-                  );           
+                  );*/           
             }
         });
     }); 
