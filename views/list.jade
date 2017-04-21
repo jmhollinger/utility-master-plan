@@ -45,7 +45,8 @@ html(lang='en')
           table.table
             thead
               tr
-                th='Date'
+                th='Start Date'
+                th='End Date'
                 th='Utility'
                 th='Name'
                 th='Description'
@@ -54,7 +55,8 @@ html(lang='en')
               tbody
                 for item in results
                   tr
-                    td= item.datecreated
+                    td= item.startdate
+                    td= item.enddate
                     td= item.utility
                     td= item.name
                     td= item.description

@@ -175,7 +175,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
                 for (var i = inputData.length - 1; i >= 0; i--) {
                   var row = {
-                       "Utility" : inputData[i].utility,
+                       "utility" : inputData[i].utility,
                        "datecreated" : moment(inputData[i].datecreated).format('M-D-YYYY'),
                        "name" : inputData[i].name,
                        "description" : inputData[i].description,
