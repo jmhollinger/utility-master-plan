@@ -304,58 +304,16 @@ app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], fal
 });
 
 app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-
-res.json({"success": true, "results": "results"})
-
-/*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT * FROM masterplanprojects', function(err, result) {
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT * FROM masterplanprojects ORDER BY utility;', function(err, result) {
             done();
             if (err) {
                 res.json({"success": false, "results": "error"});
             } else {
-
-                res.json({"success": true, "results": "results"});
-
-              var features = []
-              var geodata = result.rows
-
-              for (var i = data.length - 1; i >= 0; i--) {
-
-                  var row = {
-                      "type": "Feature",
-                      "properties": {
-                       "Utility" : geodata[i].utility,
-                       "DateCreated" : moment(geodata[i].datecreated).format('M-D-YYYY'),
-                       "Name" : geodata[i].name,
-                       "Description" : geodata[i].description,
-                       "Impacts" : geodata[i].impacts,
-                       "StartDate" : moment(geodata[i].startdate).format('M-D-YYYY'),
-                       "EndDate" : moment(geodata[i].enddate).format('M-D-YYYY'),
-                       "Type" : geodata[i].type,
-                       "StreetCut" : geodata[i].streetcut,
-                       "DaysinROW" : geodata[i].daysinrow,
-                       "Street" : geodata[i].street,
-                       "Intersection1" : geodata[i].intersection1,
-                       "Intersection2" : geodata[i].intersection2
-                      },
-                      "geometry": geodata[i].feature
-                    }
-
-                    features.push(row)
-                }   
-
-                res.json(
-                  {
-                  "type": "FeatureCollection",
-                  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-                  "features": features
-                  }
-
-                  );           
+                res.json({"success": true, "results": result.rows});
             }
         });
     });
-*/
 });
 
 
