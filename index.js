@@ -232,9 +232,9 @@ app.post('/submit', function (req, res) {
 })
 
 app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
-  res.send('csv')
-    /*pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects', function(err, result) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects', 
+        function(err, result) {
             done();
  
             if (err) {
@@ -308,8 +308,6 @@ app.get('/api/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], fal
             }
         });
     });
-
-  */
 });
 
 app.get('/api/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
