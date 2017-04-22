@@ -176,6 +176,37 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/project/:id', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: ['req.params.id']}, function(err, result) {
+            done();
+            if (err) {
+                res.json({"success": false, "results": "error"});
+            } else {
+                res.render('project', {
+                       "utility" : result.rows[0].utility,
+                       "contact" : result.rows[0].contact,
+                       "phone" : result.rows[0].phone,
+                       "email" :  result.rows[0].email,
+                       "datecreated" : moment(result.rows[0].datecreated).format('M/D/YYYY'),
+                       "name" : result.rows[0].name,
+                       "description" : result.rows[0].description,
+                       "impacts" : result.rows[0].impacts,
+                       "startdate" : moment(result.rows[0].startdate).format('M/D/YYYY'),
+                       "enddate" : moment(result.rows[0].enddate).format('M/D/YYYY'),
+                       "type" : result.rows[0].type,
+                       "streetcut" : result.rows[0].streetcut,
+                       "daysinrow" : result.rows[0].daysinrow,
+                       "street" : result.rows[0].street,
+                       "intersection1" : result.rows[0].intersection1,
+                       "intersection2" : result.rows[0].intersection2,
+                       "feature": result.rows[0].feature
+                  });
+            }
+        });
+    });
+});
+
 app.get('/listsearch', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query({text: 'SELECT * FROM masterplanprojects WHERE description ILIKE $1;', values: ['%' + req.query.q + '%']}, function(err, result) {
