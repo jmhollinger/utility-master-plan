@@ -5,7 +5,7 @@ html(lang='en')
     include nav
     .container
       .row
-        .col-sm-8.legend
+        .col-sm-4.legend
           if streetcut == "Yes"
             p.btn.btn-danger Street Cut
           else
@@ -27,7 +27,7 @@ html(lang='en')
             li Street: #{street}
             li First Intersection: #{intersection1}
             li Second Intersection: #{intersection2}
-        .col-sm-4
+        .col-sm-8
           p Map Goes Here
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')

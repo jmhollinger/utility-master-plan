@@ -183,6 +183,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
             if (err) {
                 res.render('error', {"success": false, "results": "error"});
             } else {
+
                 res.render('project', {
                        "utility" : result.rows[0].utility,
                        "contact" : result.rows[0].contact,
