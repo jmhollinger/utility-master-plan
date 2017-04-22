@@ -178,10 +178,10 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
 
 app.get('/project/:id', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-        client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: ['req.params.id']}, function(err, result) {
+        client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: [req.params.id]}, function(err, result) {
             done();
             if (err) {
-                res.json({"success": false, "results": "error"});
+                res.render('error', {"success": false, "results": "error"});
             } else {
                 res.render('project', {
                        "utility" : result.rows[0].utility,
