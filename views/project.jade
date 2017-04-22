@@ -6,26 +6,25 @@ html(lang='en')
     .container
       .row
         .col-sm-8.legend
-          h3= Utility
+          h3= utility
           h5= description
           ul
-            li= datecreated
-            li= contact
-            li= email
-            li= phone
-            li= name
-            li= impacts
-            li= startdate
-            li= enddate
-            li= type
-            li= streetcut
-            li= daysinrow
-            li= street
-            li= intersection1
-            li= intersection2
+            li Date Created: #{datecreated}
+            li Contact: #{contact}
+            li Email: #{email}
+            li Phone: #{phone}
+            li Name: #{name}
+            li Impacts: #{impacts}
+            li Start Date: #{startdate}
+            li End Date: #{enddate}
+            li Type: #{type}
+            li Street Cut?: #{streetcut}
+            li Days in ROW: #{daysinrow}
+            li Street: #{street}
+            li First Intersection: #{intersection1}
+            li Second Intersection: #{intersection2}
         .col-sm-4
-          p
-            Map Goes Here
+          p Map Goes Here
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
