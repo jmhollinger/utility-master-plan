@@ -2,7 +2,6 @@ var express = require('express');
 var pg = require('pg');
 var stormpath = require('express-stormpath');
 var bodyParser = require('body-parser');
-var request = require('request');
 var json2csv = require('express-json2csv');
 var moment = require('moment');
 
