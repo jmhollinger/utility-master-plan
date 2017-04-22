@@ -39,7 +39,7 @@ function initialize() {
     var plan = new google.maps.Data()
 
 
-    plan.loadGeoJson('http://lfucg-master-plan.herokuapp.com/api/v1/projectmap')
+    plan.loadGeoJson('https://lfucg-master-plan.herokuapp.com/api/v1/projectmap')
 
     plan.setStyle(function(feature) {
         if (feature.getProperty('StreetCut') === 'Yes') {
