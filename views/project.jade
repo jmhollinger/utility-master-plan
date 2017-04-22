@@ -6,14 +6,18 @@ html(lang='en')
     .container
       .row
         .col-sm-8.legend
-          h3= utility
+          if streetcut == "Yes"
+            p.btn.btn-danger Street Cut
+          else
+            p.btn.btn-success No Street Cut
+          h3= name
+          h5= utility
           h5= description
           ul
             li Date Created: #{datecreated}
             li Contact: #{contact}
             li Email: #{email}
             li Phone: #{phone}
-            li Name: #{name}
             li Impacts: #{impacts}
             li Start Date: #{startdate}
             li End Date: #{enddate}
