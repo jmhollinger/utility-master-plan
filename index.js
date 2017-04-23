@@ -176,6 +176,20 @@ app.get('/other', stormpath.groupsRequired(['Other', 'Admins'], false), function
   res.render('form', {"utility": "", "u_readonly" : false , "user": req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone });
 });
 
+app.get('/api/v1/project/:id', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+        client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: [req.params.id]}, function(err, result) {
+            done();
+            if (err) {
+                res.json({"success": false, "results": err});
+            } else {
+
+                res.json({"success" : true, "results" : result.rows});
+            }
+        });
+    });
+});
+
 app.get('/project/:id', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: [req.params.id]}, function(err, result) {
