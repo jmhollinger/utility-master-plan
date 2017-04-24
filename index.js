@@ -277,6 +277,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
                 for (var i = inputData.length - 1; i >= 0; i--) {
                   var row = {
+                       "projectid" : inputData[i].projectid,
                        "utility" : inputData[i].utility,
                        "datecreated" : moment(inputData[i].datecreated).format('M/D/YYYY'),
                        "name" : inputData[i].name,
@@ -462,6 +463,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                        "Street" : inputData[i].street,
                        "Intersection1" : inputData[i].intersection1,
                        "Intersection2" : inputData[i].intersection2
+                       "ProjectUrl" : "https://lfucg-master-plan.herokuapp.com/project/" + inputData[i].projectid
                       },
                       "geometry": inputData[i].feature
                     }

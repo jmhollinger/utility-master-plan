@@ -24,7 +24,7 @@ html(lang='en')
                 for item in results
                   tr
                     td
-                      a.btn.btn-default(href='/project/#{item.projectid}')
+                      a.btn.btn-default(href='/project/' + item.projectid +') View Project
                     td= item.startdate
                     td= item.enddate
                     td= item.utility
