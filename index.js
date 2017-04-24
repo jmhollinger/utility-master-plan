@@ -462,7 +462,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                        "DaysinROW" : inputData[i].daysinrow,
                        "Street" : inputData[i].street,
                        "Intersection1" : inputData[i].intersection1,
-                       "Intersection2" : inputData[i].intersection2
+                       "Intersection2" : inputData[i].intersection2,
                        "ProjectUrl" : "https://lfucg-master-plan.herokuapp.com/project/" + inputData[i].projectid
                       },
                       "geometry": inputData[i].feature
