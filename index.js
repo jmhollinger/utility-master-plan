@@ -198,7 +198,10 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                 res.render('error', {"success": false, "results": "error"});
             } else {
 
-                res.render('project', {
+                var data = result.rows
+
+                if (data.length > 0) {
+                  res.render('project', {
                        "utility" : result.rows[0].utility,
                        "contact" : result.rows[0].contact,
                        "phone" : result.rows[0].phone,
@@ -217,6 +220,10 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
                        "intersection2" : result.rows[0].intersection2,
                        "feature": result.rows[0].feature
                   });
+                }
+                else {
+                  res.render('error', {})
+                }
             }
         });
     });
