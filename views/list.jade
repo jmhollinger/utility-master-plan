@@ -23,17 +23,17 @@ html(lang='en')
                 for item in results
                   tr
                     td
-                      a(href='/project/' + item.projectid) #{startdate}
+                      a(href='/project/' + item.projectid) #{item.startdate}
                     td
-                      a(href='/project/' + item.projectid) #{enddate}
+                      a(href='/project/' + item.projectid) #{item.enddate}
                     td
-                      a(href='/project/' + item.projectid) #{utility}
+                      a(href='/project/' + item.projectid) #{item.utility}
                     td
-                      a(href='/project/' + item.projectid) #{name}
+                      a(href='/project/' + item.projectid) #{item.name}
                     td
-                      a(href='/project/' + item.projectid) #{description}
+                      a(href='/project/' + item.projectid) #{item.description}
                     td
-                      a(href='/project/' + item.projectid) #{streetcut}
+                      a(href='/project/' + item.projectid) #{item.streetcut}
     // Placed at the end of the document so the pages load faster
     script(src='js/tabletop.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
