@@ -22,18 +22,18 @@ html(lang='en')
               tbody
                 for item in results
                   tr
-                    td= item.startdate
-                      a(href='/project/' + item.projectid) ${startdate}
-                    td= item.enddate
-                      a(href='/project/' + item.projectid) ${enddate}
-                    td= item.utility
-                      a(href='/project/' + item.projectid) ${utility}
-                    td= item.name
-                      a(href='/project/' + item.projectid) ${name}
-                    td= item.description
-                      a(href='/project/' + item.projectid) ${description}
-                    td= item.streetcut
-                      a(href='/project/' + item.projectid) ${streetcut}
+                    td
+                      a(href='/project/' + item.projectid) #startdate}
+                    td
+                      a(href='/project/' + item.projectid) #{enddate}
+                    td
+                      a(href='/project/' + item.projectid) #{utility}
+                    td
+                      a(href='/project/' + item.projectid) #{name}
+                    td
+                      a(href='/project/' + item.projectid) #{description}
+                    td
+                      a(href='/project/' + item.projectid) #{streetcut}
     // Placed at the end of the document so the pages load faster
     script(src='js/tabletop.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
