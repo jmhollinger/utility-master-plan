@@ -12,7 +12,6 @@ html(lang='en')
           table.table
             thead
               tr
-                th=''
                 th='Start Date'
                 th='End Date'
                 th='Utility'
@@ -23,15 +22,18 @@ html(lang='en')
               tbody
                 for item in results
                   tr
-                    td
-                      a.btn.btn-default(href='/project/' + item.projectid) View Project
                     td= item.startdate
+                      a(href='/project/' + item.projectid) ${startdate}
                     td= item.enddate
+                      a(href='/project/' + item.projectid) ${enddate}
                     td= item.utility
+                      a(href='/project/' + item.projectid) ${utility}
                     td= item.name
+                      a(href='/project/' + item.projectid) ${name}
                     td= item.description
+                      a(href='/project/' + item.projectid) ${description}
                     td= item.streetcut
-                    td= item.street
+                      a(href='/project/' + item.projectid) ${streetcut}
     // Placed at the end of the document so the pages load faster
     script(src='js/tabletop.js')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
