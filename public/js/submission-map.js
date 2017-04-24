@@ -63,7 +63,8 @@ function initialize() {
             '<strong>End Date: </strong>' + event.feature.getProperty("EndDate") + '<br/>' +
             '<strong>Days in ROW: </strong>' + event.feature.getProperty("DaysinROW") + '<br/>' +
             '<strong>Type: </strong>' + event.feature.getProperty("Type") + '<br/>' +
-            '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut")
+            '<strong>Street Cut: </strong>' + event.feature.getProperty("StreetCut") +
+            '<a href=\"' + event.feature.getProperty("ProjectUrl") + '\" class=\"btn btn-default\"'
 
         infowindow.setContent(content)
 

@@ -12,6 +12,7 @@ html(lang='en')
           table.table
             thead
               tr
+                th=''
                 th='Start Date'
                 th='End Date'
                 th='Utility'
@@ -22,6 +23,8 @@ html(lang='en')
               tbody
                 for item in results
                   tr
+                    td
+                      a.btn.btn-default(href='/project/#{item.projectid}')
                     td= item.startdate
                     td= item.enddate
                     td= item.utility
