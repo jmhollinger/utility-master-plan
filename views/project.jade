@@ -1,6 +1,20 @@
 doctype html
 html(lang='en')
-  include head
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='')
+    title Utility Master Plan Submittal - Lexington, KY
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/css/custom.css')
+    link(rel='stylesheet', href='/css/icons/css/font-awesome.min.css')
+    //if lt IE 9
+      script(src='/js/html5shiv.min.js')
+      script(src='/js/respond.min.js')
   body
     include nav
     .container
@@ -36,4 +50,4 @@ html(lang='en')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&libraries=places')
     script(src='//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js')
-    script(src='js/project-map.js')    
+    script(src='/js/project-map.js')    
