@@ -6,6 +6,8 @@ body {
 
 #map { height: 800px; }
 
+#project-map { height: 300px; }
+
 .no-bullets {
   list-style-type: none;
   margin: 0px;

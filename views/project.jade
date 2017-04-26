@@ -5,32 +5,35 @@ html(lang='en')
     include nav
     .container
       .row
-        .col-sm-4.legend
+        .col-sm-12
+          h3= name
+          h5= utility
+      .row
+        .col-sm-4
+          p= description
           if streetcut == "Yes"
             p.btn.btn-danger Street Cut
           else
             p.btn.btn-success No Street Cut
-          h3= name
-          h5= utility
-          h5= description
-          ul
+          h5 Project Information
+          ul.no-bullets
             li Date Created: #{datecreated}
-            li Contact: #{contact}
-            li Email: #{email}
-            li Phone: #{phone}
-            li Impacts: #{impacts}
             li Start Date: #{startdate}
             li End Date: #{enddate}
             li Type: #{type}
             li Street Cut?: #{streetcut}
             li Days in ROW: #{daysinrow}
-            li Street: #{street}
-            li First Intersection: #{intersection1}
-            li Second Intersection: #{intersection2}
+            li Impacts: #{impacts}
+          h5 Contact Information
+          ul.no-bullets
+            li Contact: #{contact}
+            li Email: #{email}
+            li Phone: #{phone}
         .col-sm-8
+          #map
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDXqhUx3ZQwPBtAVsXg6tz9N_2yvrRydcQ&libraries=places')
     script(src='//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js')
-    script(src='js/submission-map.js')    
+    script(src='js/project-map.js')    
