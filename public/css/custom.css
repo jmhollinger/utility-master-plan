@@ -19,6 +19,12 @@ padding: 0px;
     z-index: 99;
 }
 
+#project-map { height: 300px; }
+
+.no-bullets {
+  list-style-type: none;
+}
+
 #clear-map {
     text-overflow: ellipsis;
     position: absolute;
