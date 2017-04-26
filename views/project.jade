@@ -20,16 +20,16 @@ html(lang='en')
     .container
       .row
         .col-sm-12
-          h3= name
-          h5= utility
+          h1= name
+          h3= utility
       .row
-        .col-sm-4
+        .col-sm-6
           p= description
           if streetcut == "Yes"
             p.btn.btn-danger Street Cut
           else
             p.btn.btn-success No Street Cut
-          h5 Project Information
+          h3 Project Information
           ul.no-bullets
             li Date Created: #{datecreated}
             li Start Date: #{startdate}
@@ -38,12 +38,12 @@ html(lang='en')
             li Street Cut?: #{streetcut}
             li Days in ROW: #{daysinrow}
             li Impacts: #{impacts}
-          h5 Contact Information
+          h3 Contact Information
           ul.no-bullets
             li Contact: #{contact}
             li Email: #{email}
             li Phone: #{phone}
-        .col-sm-8
+        .col-sm-6
           #map
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
