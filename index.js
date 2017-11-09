@@ -39,7 +39,7 @@ app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function 
   res.render('landing', {"user" : req.user.givenName + ' ' + req.user.surname, 'user_f': req.user.givenName, 'email': req.user.email, 'phone': user_phone});
 });
 
-app.get('/map', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/map', function (req, res) {
   res.render('map');
 });
 
