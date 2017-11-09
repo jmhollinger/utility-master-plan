@@ -7,6 +7,8 @@ var moment = require('moment');
 
 var app = express()
 
+app.set('port', (process.env.PORT || 5000));
+
 var https_redirect = function(req, res, next) {
     if (process.env.NODE_ENV === 'production') {
         if (req.headers['x-forwarded-proto'] != 'https') {
