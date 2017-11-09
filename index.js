@@ -436,7 +436,7 @@ app.get('/api/v1/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], 
     });
 });
 
-app.get('/api/v1/projectmap', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/api/v1/projectmap', function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects ORDER BY utility DESC;', function(err, result) {
             done();
