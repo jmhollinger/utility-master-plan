@@ -29,20 +29,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'jade');
 
-app.use(stormpath.init(app, {
-    web: {
-    login: {
-      enabled: true
-    },
-    logout: {
-      enabled: true
-    },
-    register: {
-      enabled: false
-    }
-  }
-}));
-
 app.get('/', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
   var user_phone = ''
   req.user.getCustomData(function(err, data){
@@ -483,6 +469,6 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 });
 
 
-app.on('stormpath.ready', function() {
-  app.listen(process.env.PORT || 3000);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
