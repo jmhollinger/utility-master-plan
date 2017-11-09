@@ -253,7 +253,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     });
 });
 
-app.get('/list', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/list', function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT * FROM masterplanprojects ORDER BY utility;', function(err, result) {
             done();
@@ -345,7 +345,7 @@ app.post('/submit', function (req, res) {
     });
 })
 
-app.get('/api/v1/projectcsv', stormpath.groupsRequired(['Utilities', 'Admins'], false), function (req, res) {
+app.get('/api/v1/projectcsv', function (req, res) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query('SELECT projectid, datecreated, utility, contact, email, phone, name, description, impacts, startdate, enddate, type, streetcut, daysinrow, street, intersection1, intersection2, feature FROM masterplanprojects ORDER BY utility DESC;', 
         function(err, result) {
