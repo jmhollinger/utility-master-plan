@@ -178,7 +178,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     });
 });
 
-app.get('/project/:id', false), function (req, res) {
+app.get('/project/:id', function (req, res) {
 pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         client.query({text: 'SELECT * FROM masterplanprojects WHERE projectid = $1;', values: [req.params.id]}, function(err, result) {
             done();
